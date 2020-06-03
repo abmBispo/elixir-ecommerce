@@ -1,0 +1,4 @@
+## lib/auth_me_web/templates/page/protected.html.eex
+<h2>Protected Page</h2>
+<p>You can only see this page if you are logged in</p>
+<p>You're logged in as <%= @current_user.username %></p>
