@@ -19,7 +19,7 @@ config :elixir_ecommerce, ElixirEcommerceWeb.Endpoint,
   live_view: [signing_salt: "yyFMRKQQ"]
 
 # no arquivo de configuração de cada ambiente você deve sobrescrever isto se é externo
-config :elixir_ecommerce, ElixirEcommerce.UserManager,
+config :elixir_ecommerce, ElixirEcommerce.UserManager.Guardian,
   issuer: "auth",
   secret_key: "bO3kIaPvhPjapyfYgyAwi8ppL/r+3hTclcAJLShJ5KYslUEYYPrsnEh8z73i3Vm4"
 

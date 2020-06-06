@@ -1,5 +1,5 @@
 defmodule ElixirEcommerce.UserManager.Guardian do
-  use Guardian, otp_app: :auth_me
+  use Guardian, otp_app: :elixir_ecommerce
   alias ElixirEcommerce.UserManager
 
   def subject_for_token(user, _claims) do

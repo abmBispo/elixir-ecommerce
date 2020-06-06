@@ -33,7 +33,7 @@ defmodule ElixirEcommerce.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:guardian, "~> 2.1"},
+      {:guardian, "~> 2.0"},
       {:argon2_elixir, "~> 2.0"},
       {:phoenix, "~> 1.5.1"},
       {:phoenix_ecto, "~> 4.1"},
