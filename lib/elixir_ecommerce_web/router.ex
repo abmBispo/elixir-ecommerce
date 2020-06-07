@@ -55,6 +55,7 @@ defmodule ElixirEcommerceWeb.Router do
     pipe_through [:browser, :auth]
 
     get "/", PageController, :index
+    get "/index", PageController, :index
 
     get "/login", SessionController, :new
     post "/login", SessionController, :login
@@ -65,6 +66,6 @@ defmodule ElixirEcommerceWeb.Router do
   scope "/", ElixirEcommerceWeb do
     pipe_through [:browser, :auth, :ensure_auth]
 
-    get "/protected", PageController, :protected
+    get "/protected", HomeController, :protected
   end
 end

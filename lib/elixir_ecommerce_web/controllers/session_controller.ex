@@ -7,7 +7,7 @@ defmodule ElixirEcommerceWeb.SessionController do
     changeset = UserManager.change_user(%User{})
     maybe_user = Guardian.Plug.current_resource(conn)
     if maybe_user do
-      redirect(conn, to: "/protected")
+      redirect(conn, to: "/index")
     else
       render(conn, "new.html", changeset: changeset, action: Routes.session_path(conn, :login))
     end
@@ -20,16 +20,16 @@ defmodule ElixirEcommerceWeb.SessionController do
 
   def logout(conn, _) do
     conn
-      |> Guardian.Plug.sign_out() #This module's full name is Auth.UserManager.Guardian.Plug,
-      |> redirect(to: "/login")   #and the arguments specfied in the Guardian.Plug.sign_out()
-  end                           #docs are not applicable here
+      |> Guardian.Plug.sign_out()
+      |> redirect(to: "/index")
+  end
 
   defp login_reply({:ok, user}, conn) do
     conn
       |> put_flash(:info, "Welcome back!")
-      |> Guardian.Plug.sign_in(user)   #This module's full name is Auth.UserManager.Guardian.Plug,
-      |> redirect(to: "/protected")    #and the arguments specified in the Guardian.Plug.sign_in()
-  end                                #docs are not applicable here.
+      |> Guardian.Plug.sign_in(user)
+      |> redirect(to: "/index")
+  end
 
   defp login_reply({:error, reason}, conn) do
     conn

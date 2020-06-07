@@ -33,4 +33,16 @@ defmodule ElixirEcommerce.Authorization do
 
     Map.put(authorization, action, updated_read)
   end
+
+  # Defining roles
+  def can("user" = role) do
+    grant(role)
+    |> read!(Product)
+  end
+
+  def can("admin" = role) do
+    grant(role)
+    |> all!(Product)
+    |> all!(User)
+  end
 end
