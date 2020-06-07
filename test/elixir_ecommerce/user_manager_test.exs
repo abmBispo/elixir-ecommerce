@@ -6,9 +6,9 @@ defmodule ElixirEcommerce.UserManagerTest do
   describe "users" do
     alias ElixirEcommerce.UserManager.User
 
-    @valid_attrs %{email: "sr.alan.bispo@gmail.com", password: "123456", username: "abmbispo"}
+    @valid_attrs %{email: "sr.alan.bispo@gmail.com", password: "123456", username: "abmbispo", role: "admin"}
     @update_attrs %{email: "bispo@gmail.com", password: "654321", username: "abmBispo"}
-    @invalid_attrs %{email: nil, password: nil, username: nil}
+    @invalid_attrs %{email: nil, password: nil, username: nil, role: "admin"}
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =

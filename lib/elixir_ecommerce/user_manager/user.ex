@@ -7,6 +7,7 @@ defmodule ElixirEcommerce.UserManager.User do
     field :email, :string
     field :password, :string
     field :username, :string
+    field :role, :string
 
     timestamps()
   end
@@ -14,9 +15,11 @@ defmodule ElixirEcommerce.UserManager.User do
   @doc false
   def changeset(user, attrs) do
     user
-      |> cast(attrs, [:username, :email, :password])
-      |> validate_required([:username, :email, :password])
-      |> put_password_hash()
+    |> cast(attrs, [:username, :email, :password, :role])
+    |> validate_required([:username, :email, :password, :role])
+    |> validate_inclusion(:role, ["client", "admin"])
+    |> unique_constraint(:email)
+    |> put_password_hash()
   end
 
   defp put_password_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do

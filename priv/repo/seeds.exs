@@ -1,11 +1,8 @@
-# Script for populating the database. You can run it as:
-#
-#     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     ElixirEcommerce.Repo.insert!(%ElixirEcommerce.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
+# mix run priv/repo/seeds.exs
+
+ElixirEcommerce.UserManager.create_user(%{
+  email: "sr.alan.bispo@gmail.com",
+  password: "123456",
+  username: "abmbispo",
+  role: "admin"
+})
