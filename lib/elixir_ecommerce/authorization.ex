@@ -10,6 +10,13 @@ defmodule ElixirEcommerce.Authorization do
   def read!(authorization, resource), do: permit!(authorization, :read, resource)
   def update!(authorization, resource), do: permit!(authorization, :update, resource)
   def delete!(authorization, resource), do: permit!(authorization, :delete, resource)
+  def all!(authorization, resource) do
+    authorization
+    |> create!(resource)
+    |> read!(resource)
+    |> update!(resource)
+    |> delete!(resource)
+  end
 
   # Check for permissions
   def create?(authorization, resource), do: Map.get(authorization.create, resource, false)

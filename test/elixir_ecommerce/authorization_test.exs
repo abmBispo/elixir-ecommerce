@@ -2,6 +2,7 @@ defmodule ElixirEcommerce.AuthorizationTest do
   use ExUnit.Case
   import ElixirEcommerce.Authorization, except: [can: 1]
   alias ElixirEcommerce.Product
+  alias ElixirEcommerce.User
 
   def can("user" = role) do
     grant(role)
@@ -10,10 +11,8 @@ defmodule ElixirEcommerce.AuthorizationTest do
 
   def can("admin" = role) do
     grant(role)
-    |> create!(Product)
-    |> read!(Product)
-    |> update!(Product)
-    |> delete!(Product)
+    |> all!(Product)
+    |> all!(User)
   end
 
   # Testing for user role
