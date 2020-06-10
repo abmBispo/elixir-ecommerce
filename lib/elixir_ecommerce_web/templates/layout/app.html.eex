@@ -11,17 +11,33 @@
   <body>
     <header>
       <section class="container">
-        <nav role="navigation">
-          <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
-            <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
-              <li><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
-            <% end %>
-          </ul>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+          <div class="container">
+            <a class="navbar-brand" href="#">Start Bootstrap</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </nav>
-        <a href="https://phoenixframework.org/" class="phx-logo">
-          <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>
-        </a>
       </section>
     </header>
     <main role="main" class="container">
@@ -29,5 +45,12 @@
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= @inner_content %>
     </main>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+      </div>
+      <!-- /.container -->
+    </footer>
   </body>
 </html>
