@@ -24,6 +24,18 @@ defmodule ElixirEcommerce.DepartmentTest do
       assert {:error, %Ecto.Changeset{}} = Department.create(@invalid_attrs)
     end
 
+    test "Should retrieve department by its name" do
+      department_fixture(@valid_attrs)
+      assert department = Department.retrieve(%{name: "Sports"}) |> List.first
+      assert department.name == "Sports"
+    end
+
+    test "Should retrieve department by its ID" do
+      created_department = department_fixture(@valid_attrs)
+      assert retrieved_department = created_department.id |> Department.retrieve()
+      assert retrieved_department.name == "Sports"
+    end
+
     test "Should update department with valid params" do
       department = department_fixture(@valid_attrs)
       assert {:ok, department} = Department.update(department, @update_attrs)
@@ -33,6 +45,12 @@ defmodule ElixirEcommerce.DepartmentTest do
     test "Should not update department with valid params" do
       department = department_fixture(@valid_attrs)
       assert {:error, %Ecto.Changeset{}} = Department.update(department, @invalid_attrs)
+    end
+
+    test "Should delete department" do
+      department_fixture(@valid_attrs)
+      assert department = Department.retrieve(%{name: "Sports"}) |> List.first
+      assert {:ok, _} = department |> Department.delete
     end
   end
 end

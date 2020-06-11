@@ -3,10 +3,11 @@ defmodule ElixirEcommerce.Repo.Migrations.CreateDepartments do
 
   def change do
     create table(:departments) do
-      add :name, :string
+      add :name, :string, null: false
 
       timestamps()
     end
 
+    create index("departments", [:name], unique: true)
   end
 end

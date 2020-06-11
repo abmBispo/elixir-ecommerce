@@ -6,3 +6,19 @@ ElixirEcommerce.UserManager.create_user(%{
   username: "abmbispo",
   role: "admin"
 })
+
+ElixirEcommerce.Department.create(%{
+  name: "Sports"
+})
+
+ElixirEcommerce.Department.create(%{
+  name: "Eletronics"
+})
+
+ElixirEcommerce.Department.create(%{
+  name: "Bathroom"
+})
+
+ElixirEcommerce.Department.create(%{
+  name: "Games"
+})
