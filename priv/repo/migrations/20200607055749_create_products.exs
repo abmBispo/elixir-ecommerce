@@ -3,10 +3,10 @@ defmodule ElixirEcommerce.Repo.Migrations.CreateProducts do
 
   def change do
     create table(:products) do
-      add :name, :integer, null: false
+      add :name, :string, null: false
       add :amount, :integer, null: false
       add :price, :integer, null: false
-      add :department, :string, null: false
+      add :department_id, references(:departments, on_delete: :nothing)
 
       timestamps()
     end

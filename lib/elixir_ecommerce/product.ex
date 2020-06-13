@@ -1,11 +1,16 @@
 defmodule ElixirEcommerce.Product do
   use Ecto.Schema
   import Ecto.Changeset
-  alias __MODULE__
-  alias ElixirEcommerce.Repo
-  alias ElixirEcommerce.Department
+  import Ecto.Query, only: [from: 2]
+
+  alias ElixirEcommerce.{
+    Repo,
+    Department,
+    Product
+  }
 
   schema "products" do
+    field :name, :string
     field :amount, :integer
     field :price, :integer
     belongs_to :department, Department
@@ -16,8 +21,9 @@ defmodule ElixirEcommerce.Product do
   @doc false
   def changeset(product, attrs) do
     product
-    |> cast(attrs, [:amount, :price, :department])
-    |> validate_required([:amount, :price, :department])
+    |> cast(attrs, [:name, :amount, :price])
+    |> put_assoc(:department, attrs[:department])
+    |> validate_required([:name, :amount, :price, :department])
   end
 
   def create(attrs \\ %{}) do

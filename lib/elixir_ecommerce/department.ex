@@ -3,9 +3,11 @@ defmodule ElixirEcommerce.Department do
   import Ecto.Changeset
   import Ecto.Query, only: [from: 2]
 
-  alias __MODULE__
-  alias ElixirEcommerce.Product
-  alias ElixirEcommerce.Repo
+  alias ElixirEcommerce.{
+    Repo,
+    Department,
+    Product
+  }
 
   schema "departments" do
     field :name, :string
