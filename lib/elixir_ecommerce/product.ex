@@ -20,10 +20,16 @@ defmodule ElixirEcommerce.Product do
 
   @doc false
   def changeset(product, attrs) do
-    product
-    |> cast(attrs, [:name, :amount, :price])
-    |> put_assoc(:department, attrs[:department])
-    |> validate_required([:name, :amount, :price, :department])
+    unless is_nil(attrs[:department]) do
+      product
+      |> cast(attrs, [:name, :amount, :price])
+      |> put_assoc(:department, attrs[:department])
+      |> validate_required([:name, :amount, :price, :department])
+    else
+      product
+      |> cast(attrs, [:name, :amount, :price])
+      |> validate_required([:name, :amount, :price, :department])
+    end
   end
 
   def create(attrs \\ %{}) do
@@ -34,12 +40,6 @@ defmodule ElixirEcommerce.Product do
 
   def all(), do: Repo.all(Product)
   def retrieve(id) when is_integer(id), do: Repo.get!(Product, id)
-  def retrieve(attrs = %{name: name}) when is_map(attrs) do
-    query = from product in Product,
-                 where: product.name == ^name,
-                 select: product
-    Repo.all(query)
-  end
 
   def update(%Product{} = product, attrs \\ %{}) do
     product
