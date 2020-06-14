@@ -47,7 +47,7 @@ defmodule ElixirEcommerce.Product do
     |> Repo.update()
   end
 
-  def delete_user(%Product{} = product) do
+  def delete(%Product{} = product) do
     Repo.delete(product)
   end
 end

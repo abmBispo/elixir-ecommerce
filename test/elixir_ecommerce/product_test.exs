@@ -92,9 +92,14 @@ defmodule ElixirEcommerce.ProductTest do
     end
 
     test "Should not update product with invalid params" do
+      product = product_fixture(%{name: "Real cool name"})
+      assert product.name == "Real cool name"
+      assert {:error, _} = Product.update(product, @invalid_attrs)
     end
 
     test "Should delete product" do
+      product = product_fixture(%{name: "Real cool name"})
+      assert {:ok, _} = product |> Product.delete
     end
   end
 end
