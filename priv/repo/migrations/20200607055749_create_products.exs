@@ -6,7 +6,7 @@ defmodule ElixirEcommerce.Repo.Migrations.CreateProducts do
       add :name, :string, null: false
       add :amount, :integer, null: false
       add :price, :integer, null: false
-      add :department_id, references(:departments, on_delete: :nothing)
+      add :department_id, references(:departments, on_delete: :nothing), null: false
 
       timestamps()
     end

@@ -1,10 +1,15 @@
 defmodule ElixirEcommerce.Shipping do
   use Ecto.Schema
   import Ecto.Changeset
+  alias ElixirEcommerce.{
+    Sell,
+    SubSell
+  }
 
   schema "shipments" do
     field :status, :string
-    field :sell_id, :id
+    belongs_to :sell, Sell
+    has_many :sub_sells, SubSell
 
     timestamps()
   end

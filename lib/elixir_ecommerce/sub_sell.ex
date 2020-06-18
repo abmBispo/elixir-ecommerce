@@ -1,13 +1,18 @@
 defmodule ElixirEcommerce.SubSell do
   use Ecto.Schema
   import Ecto.Changeset
+  alias ElixirEcommerce.{
+    Sell,
+    Product,
+    Shipping
+  }
 
   schema "sub_sells" do
     field :amount_sold, :integer
     field :status, :integer
-    field :sell, :id
-    field :product, :id
-    field :shipments, :id
+    belongs_to :sell, Sell
+    belongs_to :product, Product
+    belongs_to :shipping, Shipping
 
     timestamps()
   end

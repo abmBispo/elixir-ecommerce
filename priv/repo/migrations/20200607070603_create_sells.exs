@@ -3,7 +3,7 @@ defmodule ElixirEcommerce.Repo.Migrations.CreateSells do
 
   def change do
     create table(:sells) do
-      add :client_id, references(:users, on_delete: :nothing)
+      add :client_id, references(:users, on_delete: :nothing), null: false
 
       timestamps()
     end

@@ -4,7 +4,7 @@ defmodule ElixirEcommerce.Repo.Migrations.CreateShipments do
   def change do
     create table(:shipments) do
       add :status, :string, null: false
-      add :sell_id, references(:sells, on_delete: :nothing)
+      add :sell_id, references(:sells, on_delete: :nothing), null: false
 
       timestamps()
     end

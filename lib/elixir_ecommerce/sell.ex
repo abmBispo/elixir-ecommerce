@@ -1,9 +1,10 @@
 defmodule ElixirEcommerce.Sell do
   use Ecto.Schema
   import Ecto.Changeset
+  alias ElixirEcommerce.SubSell
 
   schema "sells" do
-    field :product_id, :id
+    has_many :sub_sells, SubSell
     field :client_id, :id
 
     timestamps()
