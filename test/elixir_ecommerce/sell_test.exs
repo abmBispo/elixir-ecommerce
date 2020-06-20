@@ -7,11 +7,16 @@ defmodule ElixirEcommerce.SellTest do
     ProductTest
   }
 
-  def product_fixture do
+  def sub_sell_fixture do
   end
 
   describe "Sell" do
     test "should be created with valid params" do
+      assert {:ok, product} =
+        @valid_attrs_first
+        |> Map.put(:department, department)
+        |> Product.create()
+      assert product.department.name == department.name
     end
 
     test "should not be created with invalid params" do
