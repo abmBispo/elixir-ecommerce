@@ -4,7 +4,8 @@ defmodule ElixirEcommerce.SubSell do
   alias ElixirEcommerce.{
     Sell,
     Product,
-    Shipping
+    Shipping,
+    SubSell
   }
 
   schema "sub_sells" do
@@ -21,15 +22,14 @@ defmodule ElixirEcommerce.SubSell do
   def changeset(sub_sell, attrs) do
     sub_sell
     |> cast(attrs, [:amount_sold, :status])
-    |> validate_required([:amount_sold, :status])
+    |> put_assoc(:sell, attrs[:sell])
+    |> put_assoc(:product, attrs[:product])
+    |> validate_required([:amount_sold, :status, :sell, :product])
   end
 
   def create(attrs \\ %{}) do
     %SubSell{}
-    |> cast(attrs, [:amount_sold, :status])
-    |> put_assoc(:sell, attrs[:sell])
-    |> put_assoc(:product, attrs[:product])
-    |> put_assoc(:shipping, attrs[:shipping])
-    |> validate_required([:amount_sold, :status, :sell, :product, :shipping])
+    |> Product.changeset(attrs)
+    |> Repo.insert()
   end
 end

@@ -7,7 +7,7 @@ defmodule ElixirEcommerce.Repo.Migrations.CreateSubSells do
       add :status, :integer
       add :sell_id, references(:sells, on_delete: :nothing), null: false
       add :product_id, references(:products, on_delete: :nothing), null: false
-      add :shipping_id, references(:shipments, on_delete: :nothing), null: false
+      add :shipping_id, references(:shipments, on_delete: :nothing)
 
       timestamps()
     end

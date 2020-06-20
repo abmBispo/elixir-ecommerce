@@ -10,13 +10,22 @@ defmodule ElixirEcommerce.SellTest do
   def sub_sell_fixture do
   end
 
+  def sell_fixture do
+  end
+
   describe "SubSell" do
     test "should be created with valid params" do
-      assert {:ok, product} =
+      product = ProductTest.product_fixture()
+      sell = SellTest.sell_fixture()
+
+      assert {:ok, sub_sell} =
         @valid_attrs_first
-        |> Map.put(:department, department)
-        |> Product.create()
-      assert product.department.name == department.name
+        |> Map.put(:product, product)
+        |> Map.put(:sell, sell)
+        |> SubSell.create()
+
+      assert sub_sell.product == product
+      assert sub_sell.sell == sell
     end
 
     test "should not be created with invalid params" do
