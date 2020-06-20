@@ -4,19 +4,27 @@ defmodule ElixirEcommerce.SellTest do
     Department,
     Product,
     Sell,
-    ProductTest
+    UserManager
   }
 
-  def sub_sell_fixture do
+  @valid_attrs %{email: "sr.alan.bispo@gmail.com", password: "123456", username: "abmbispo", role: "client"}
+
+  def user_fixture(attrs \\ %{}) do
+    {:ok, user} =
+      attrs
+      |> Enum.into(@valid_attrs)
+      |> UserManager.create_user()
+    user
+  end
+
+  def sell_fixture do
   end
 
   describe "Sell" do
     test "should be created with valid params" do
-      assert {:ok, product} =
-        @valid_attrs_first
-        |> Map.put(:department, department)
-        |> Product.create()
-      assert product.department.name == department.name
+      client = user_fixture()
+      assert {:ok, sell} = Sell.create(%{client: client})
+      assert sell.client == client
     end
 
     test "should not be created with invalid params" do

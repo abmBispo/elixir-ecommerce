@@ -2,11 +2,14 @@ defmodule ElixirEcommerce.Sell do
   use Ecto.Schema
   import Ecto.Changeset
   alias ElixirEcommerce.{
-    User,
-    SubSell
+    Repo,
+    UserManager.User,
+    SubSell,
+    Sell
   }
 
   schema "sells" do
+    field :uuid, Ecto.UUID, autogenerate: true
     has_many :sub_sells, SubSell
     belongs_to :client, User
 
@@ -17,6 +20,13 @@ defmodule ElixirEcommerce.Sell do
   def changeset(sell, attrs) do
     sell
     |> cast(attrs, [])
-    |> validate_required([])
+    |> put_assoc(:client, attrs[:client])
+    |> validate_required([:uuid, :client])
+  end
+
+  def create(attrs \\ %{}) do
+    %Sell{}
+    |> Sell.changeset(attrs)
+    |> Repo.insert()
   end
 end
