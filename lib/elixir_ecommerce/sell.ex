@@ -9,7 +9,7 @@ defmodule ElixirEcommerce.Sell do
   }
 
   schema "sells" do
-    field :uuid, Ecto.UUID, autogenerate: true
+    field :uuid, Ecto.UUID
     has_many :sub_sells, SubSell
     belongs_to :client, User
 
@@ -21,6 +21,7 @@ defmodule ElixirEcommerce.Sell do
     sell
     |> cast(attrs, [])
     |> put_assoc(:client, attrs[:client])
+    |> put_change(:uuid, Ecto.UUID.generate())
     |> validate_required([:uuid, :client])
   end
 
