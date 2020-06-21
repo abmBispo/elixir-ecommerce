@@ -45,5 +45,10 @@ defmodule ElixirEcommerce.SellTest do
       assert retrieved_sell = Sell.retrieve(existing_sell.id)
       assert retrieved_sell.client == existing_sell.client
     end
+
+    test "should be deleted" do
+      sell = sell_fixture()
+      assert {:ok, _} = Sell.delete(sell)
+    end
   end
 end

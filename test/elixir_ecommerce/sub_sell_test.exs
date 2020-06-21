@@ -1,4 +1,4 @@
-defmodule ElixirEcommerce.SellTest do
+defmodule ElixirEcommerce.SubSellTest do
   use ElixirEcommerce.DataCase
   alias ElixirEcommerce.{
     Department,
@@ -15,17 +15,6 @@ defmodule ElixirEcommerce.SellTest do
 
   describe "SubSell" do
     test "should be created with valid params" do
-      product = ProductTest.product_fixture()
-      sell = SellTest.sell_fixture()
-
-      assert {:ok, sub_sell} =
-        @valid_attrs_first
-        |> Map.put(:product, product)
-        |> Map.put(:sell, sell)
-        |> SubSell.create()
-
-      assert sub_sell.product == product
-      assert sub_sell.sell == sell
     end
 
     test "should not be created with invalid params" do

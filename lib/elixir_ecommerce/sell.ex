@@ -42,4 +42,8 @@ defmodule ElixirEcommerce.Sell do
     |> Repo.preload(:client)
     |> List.first()
   end
+
+  def delete(%Sell{} = sell) do
+    Repo.delete(sell)
+  end
 end
