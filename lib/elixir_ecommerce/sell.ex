@@ -1,6 +1,7 @@
 defmodule ElixirEcommerce.Sell do
   use Ecto.Schema
   import Ecto.Changeset
+  import Ecto.Query, only: [from: 2]
   alias ElixirEcommerce.{
     Repo,
     UserManager.User,
@@ -29,5 +30,16 @@ defmodule ElixirEcommerce.Sell do
     %Sell{}
     |> Sell.changeset(attrs)
     |> Repo.insert()
+  end
+
+  def retrieve(id) when is_integer(id), do: Repo.get(Sell, id) |> Repo.preload(:client)
+  def retrieve(uuid) when is_binary(uuid) do
+    query = from sell in Sell,
+                 where: sell.uuid == ^uuid,
+                 select: sell
+    query
+    |> Repo.all()
+    |> Repo.preload(:client)
+    |> List.first()
   end
 end
