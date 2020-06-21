@@ -32,7 +32,12 @@ defmodule ElixirEcommerce.Sell do
     |> Repo.insert()
   end
 
-  def retrieve(id) when is_integer(id), do: Repo.get(Sell, id) |> Repo.preload(:client)
+  def retrieve(id) when is_integer(id) do
+    Sell
+    |> Repo.get(id)
+    |> Repo.preload(:client)
+  end
+
   def retrieve(uuid) when is_binary(uuid) do
     query = from sell in Sell,
                  where: sell.uuid == ^uuid,

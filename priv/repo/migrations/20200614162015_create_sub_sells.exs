@@ -3,8 +3,8 @@ defmodule ElixirEcommerce.Repo.Migrations.CreateSubSells do
 
   def change do
     create table(:sub_sells) do
-      add :amount_sold, :integer
-      add :status, :integer
+      add :amount_sold, :integer, null: false
+      add :status, :string, null: false, default: "in_analysis"
       add :sell_id, references(:sells, on_delete: :nothing), null: false
       add :product_id, references(:products, on_delete: :nothing), null: false
       add :shipping_id, references(:shipments, on_delete: :nothing)
