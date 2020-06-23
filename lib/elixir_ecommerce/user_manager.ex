@@ -117,4 +117,9 @@ defmodule ElixirEcommerce.UserManager do
         end
     end
   end
+
+  def list_purchases(%User{} = user) do
+    user = Repo.preload(user, :purchases)
+    user.purchases
+  end
 end

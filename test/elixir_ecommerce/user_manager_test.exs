@@ -1,9 +1,12 @@
 defmodule ElixirEcommerce.UserManagerTest do
   use ElixirEcommerce.DataCase
 
-  alias ElixirEcommerce.UserManager
+  alias ElixirEcommerce.{
+    UserManager,
+    Sell
+  }
 
-  describe "users" do
+  describe "User" do
     alias ElixirEcommerce.UserManager.User
 
     @valid_attrs %{email: "sr.alan.bispo@gmail.com", password: "123456", username: "abmbispo", role: "admin"}
@@ -26,6 +29,19 @@ defmodule ElixirEcommerce.UserManagerTest do
     test "get_user!/1 returns the user with given id" do
       user = user_fixture()
       assert UserManager.get_user!(user.id) == user
+    end
+
+    test "should access all purchases" do
+      user = user_fixture()
+      assert {:ok, sell_1} = Sell.create(%{client: user})
+      assert {:ok, sell_2} = Sell.create(%{client: user})
+      assert {:ok, sell_3} = Sell.create(%{client: user})
+
+      uuids =
+        UserManager.list_purchases(user)
+        |> Enum.map(fn(sell) -> sell.uuid end)
+
+      assert [sell_1.uuid, sell_2.uuid, sell_3.uuid] == uuids
     end
 
     test "create_user/1 with valid data creates a user" do
