@@ -3,11 +3,14 @@ defmodule ElixirEcommerce.UserManager.User do
   import Ecto.Changeset
   alias Argon2
 
+  alias ElixirEcommerce.Sell
+
   schema "users" do
     field :email, :string
     field :password, :string
     field :username, :string
     field :role, :string
+    has_many :purchases, Sell, foreign_key: :client_id
 
     timestamps()
   end
