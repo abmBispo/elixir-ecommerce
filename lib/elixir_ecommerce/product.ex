@@ -1,5 +1,6 @@
 defmodule ElixirEcommerce.Product do
   use Ecto.Schema
+  import Ecto.Query
   import Ecto.Changeset
 
   alias ElixirEcommerce.{
@@ -37,7 +38,13 @@ defmodule ElixirEcommerce.Product do
     |> Repo.insert()
   end
 
-  def all(), do: Repo.all(Product)
+  def all(params \\ %{page: 1, page_size: 25}) do
+    query =
+      Product
+      |> preload(:department)
+      |> Repo.paginate(params)
+  end
+
   def retrieve(id) when is_integer(id), do: Repo.get!(Product, id)
 
   def update(%Product{} = product, attrs \\ %{}) do

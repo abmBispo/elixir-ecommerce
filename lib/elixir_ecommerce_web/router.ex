@@ -9,21 +9,6 @@ defmodule ElixirEcommerceWeb.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
-  end
-
-  scope "/", ElixirEcommerceWeb do
-    pipe_through :browser
-
-    get "/", PageController, :index
-  end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", ElixirEcommerceWeb do
-  #   pipe_through :api
-  # end
-
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put
@@ -66,6 +51,7 @@ defmodule ElixirEcommerceWeb.Router do
   scope "/", ElixirEcommerceWeb do
     pipe_through [:browser, :auth, :ensure_auth]
 
-    get "/protected", HomeController, :protected
+    get "/", HomeController, :index
+    get "/index", HomeController, :index
   end
 end

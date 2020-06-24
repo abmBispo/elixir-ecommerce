@@ -1,15 +1,20 @@
 defmodule ElixirEcommerceWeb.SessionController do
   use ElixirEcommerceWeb, :controller
 
-  alias ElixirEcommerce.{UserManager, UserManager.User, UserManager.Guardian}
+  alias ElixirEcommerce.{
+    UserManager,
+    UserManager.User,
+    UserManager.Guardian
+  }
 
   def new(conn, _) do
-    changeset = UserManager.change_user(%User{})
-    maybe_user = Guardian.Plug.current_resource(conn)
-    if maybe_user do
+    if Guardian.Plug.current_resource(conn) do
       redirect(conn, to: "/index")
     else
-      render(conn, "new.html", changeset: changeset, action: Routes.session_path(conn, :login))
+      render(conn,
+             "new.html",
+             changeset: UserManager.change_user(%User{}),
+             action: Routes.session_path(conn, :login))
     end
   end
 
