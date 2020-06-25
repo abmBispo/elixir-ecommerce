@@ -16,6 +16,17 @@ config :elixir_ecommerce, ElixirEcommerceWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :arc,
+  storage: Arc.Storage.S3,
+  bucket: {:system, "S3_BUCKET"},
+  access_key_id: {:system, "AWS_ACCESS_KEY_ID"},
+  secret_access_key: {:system, "AWS_SECRET_ACCESS_KEY"},
+  s3: [
+    scheme: {:system, "S3_SCHEME"} || "https://",
+    host: {:system, "S3_HOST"} || "s3.amazonaws.com",
+    region: {:system, "S3_REGION"} || "us-east-1"
+  ]
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

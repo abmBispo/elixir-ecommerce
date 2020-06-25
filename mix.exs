@@ -20,7 +20,7 @@ defmodule ElixirEcommerce.MixProject do
   def application do
     [
       mod: {ElixirEcommerce.Application, []},
-      extra_applications: [:logger, :runtime_tools, :guardian]
+      extra_applications: [:logger, :runtime_tools, :guardian, :arc_ecto]
     ]
   end
 
@@ -33,6 +33,7 @@ defmodule ElixirEcommerce.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:arc_ecto, "~> 0.7.0"}
       {:scrivener_ecto, "~> 2.0"},
       {:guardian, "~> 2.0"},
       {:argon2_elixir, "~> 2.0"},

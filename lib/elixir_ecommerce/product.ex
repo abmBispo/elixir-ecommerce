@@ -4,6 +4,7 @@ defmodule ElixirEcommerce.Product do
   import Ecto.Changeset
 
   alias ElixirEcommerce.{
+    ProductImages
     Repo,
     Department,
     Product
@@ -14,13 +15,14 @@ defmodule ElixirEcommerce.Product do
     field :amount, :integer
     field :price, :integer
     belongs_to :department, Department
+    has_many :images, ProductImages
 
     timestamps()
   end
 
   @doc false
   def changeset(product, attrs) do
-    unless is_nil(attrs[:department]) do
+    product = unless is_nil(attrs[:department]) do
       product
       |> cast(attrs, [:name, :amount, :price])
       |> put_assoc(:department, attrs[:department])
@@ -29,6 +31,11 @@ defmodule ElixirEcommerce.Product do
       product
       |> cast(attrs, [:name, :amount, :price])
       |> validate_required([:name, :amount, :price, :department])
+    end
+    unless is_nil(attrs[:images]) do
+      attrs[:image] |> Enum.each fn(image) ->
+        cast_attachments(product, image, [:image])
+      end
     end
   end
 
