@@ -29,7 +29,7 @@ query =
   order_by: fragment("RANDOM()"),
   limit: 1
 
-Enum.each(0..50, fn(x) ->
+Enum.each(0..100, fn(x) ->
   product_names = [
     "NBA shorts",
     "NBA shirts",
@@ -48,7 +48,7 @@ Enum.each(0..50, fn(x) ->
   {:ok, product} =
     %{
       name: "#{Enum.at(product_names, Enum.random(0..7))} - #{x + 1}",
-      description: Faker.Lorem.paragraph(2),
+      description: Faker.Lorem.paragraph(Enum.random(15..50)),
       amount: Enum.random(0..100),
       price: Enum.random(1000..25000)
     }

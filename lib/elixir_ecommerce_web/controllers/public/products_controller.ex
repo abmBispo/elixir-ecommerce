@@ -10,7 +10,7 @@ defmodule ElixirEcommerceWeb.ProductsController do
 
   def show(conn, params) do
     departments = Department.all()
-
-    render(conn, :show, departments: departments)
+    product = Product.retrieve(params["id"])
+    render(conn, :show, departments: departments, product: product)
   end
 end

@@ -55,7 +55,8 @@ defmodule ElixirEcommerce.Product do
       |> Repo.paginate(params)
   end
 
-  def retrieve(id) when is_integer(id), do: Repo.get!(Product, id)
+  def retrieve(id) when is_number(id), do: Repo.get!(Product, id)
+  def retrieve(id) when is_binary(id), do: Repo.get!(Product, id)
   def retrieve(params) do
     Product
     |> preload(:department)
