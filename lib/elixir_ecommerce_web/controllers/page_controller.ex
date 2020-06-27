@@ -8,12 +8,16 @@ defmodule ElixirEcommerceWeb.PageController do
     Repo
   }
 
-  def index(conn, _params) do
-    products = Product.all()
+  def index(conn, params) do
     departments = Department.all()
 
-    render(conn, "index.html",
-      products: products,
-      departments: departments)
+    products = if params["department"] do
+      Product.retrieve(department_id: params["department"])
+      |> Repo.paginate(page: params["page"], page_size: 25)
+    else
+      Product.all()
+    end
+
+    render(conn, "index.html", products: products, departments: departments)
   end
 end

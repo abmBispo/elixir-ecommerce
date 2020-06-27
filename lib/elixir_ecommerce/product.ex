@@ -11,6 +11,9 @@ defmodule ElixirEcommerce.Product do
     Product
   }
 
+  @required_fields [:name, :amount, :price, :department, :description]
+  @cast_fields [:name, :amount, :price, :description]
+
   schema "products" do
     field :name, :string
     field :description, :string
@@ -23,22 +26,20 @@ defmodule ElixirEcommerce.Product do
   end
 
   @doc false
+  def changeset(product, attrs) when is_map_key(attrs, :department) do
+    product
+    |> cast(attrs, @cast_fields)
+    |> put_assoc(:department, attrs[:department])
+    |> validate_required(@required_fields)
+  end
+
   def changeset(product, attrs) do
-    product = unless is_nil(attrs[:department]) do
-      product
-      |> cast(attrs, [:name, :amount, :price, :description])
-      |> put_assoc(:department, attrs[:department])
-      |> validate_required([:name, :amount, :price, :department, :description])
-    else
-      product
-      |> cast(attrs, [:name, :amount, :price, :description])
-      |> validate_required([:name, :amount, :price, :department, :description])
-    end
-    # unless is_nil(attrs[:images]) do
+    product
+    |> cast(attrs, @cast_fields)
+    |> validate_required(@required_fields)
     #   attrs[:image] |> Enum.each fn(image) ->
     #     cast_attachments(product, image, [:image])
     #   end
-    # end
   end
 
   def create(attrs \\ %{}) do
@@ -55,6 +56,11 @@ defmodule ElixirEcommerce.Product do
   end
 
   def retrieve(id) when is_integer(id), do: Repo.get!(Product, id)
+  def retrieve(params) do
+    Product
+    |> preload(:department)
+    |> where(^params)
+  end
 
   def update(%Product{} = product, attrs \\ %{}) do
     product
