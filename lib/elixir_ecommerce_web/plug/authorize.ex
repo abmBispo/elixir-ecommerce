@@ -20,7 +20,7 @@ defmodule ElixirEcommerceWeb.Authorize do
   def continue(false, conn) do
     conn
     |> put_flash(:error, "You're not authorized to access this funcionality")
-    |> redirect(to: Routes.page_path(conn, :index))
+    |> redirect(to: Routes.public_path(conn, :index))
     |> halt()
   end
 

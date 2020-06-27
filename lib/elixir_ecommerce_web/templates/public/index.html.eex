@@ -1,7 +1,7 @@
 <div class="row mx-auto">
 
   <div class="col-md-2 col-12 p-0 p-md-2">
-    <h1 class="my-4">Elixir Ecommerce</h1>
+    <h1 class="my-4"><strong>E</strong><small>ixir</small><strong>E</strong><small>commerce</small></h1>
     <div class="list-group">
       <%= Enum.map @departments, fn(department) -> %>
         <%= link(department.name, to: index_by_department(department), class: "list-group-item") %>

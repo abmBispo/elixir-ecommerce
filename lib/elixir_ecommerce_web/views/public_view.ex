@@ -1,4 +1,4 @@
-defmodule ElixirEcommerceWeb.PageView do
+defmodule ElixirEcommerceWeb.PublicView do
   use ElixirEcommerceWeb, :view
   alias ElixirEcommerce.{
     Product,
@@ -16,6 +16,6 @@ defmodule ElixirEcommerceWeb.PageView do
 
   # Routing
   def index_by_department(%Department{} = department) do
-    Routes.page_path(Endpoint, :index, department: department.id)
+    Routes.public_path(Endpoint, :index, department: department.id)
   end
 end

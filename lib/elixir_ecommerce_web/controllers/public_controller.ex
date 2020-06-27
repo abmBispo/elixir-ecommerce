@@ -1,4 +1,4 @@
-defmodule ElixirEcommerceWeb.PageController do
+defmodule ElixirEcommerceWeb.PublicController do
   use ElixirEcommerceWeb, :controller
   alias ElixirEcommerce.{
     UserManager,

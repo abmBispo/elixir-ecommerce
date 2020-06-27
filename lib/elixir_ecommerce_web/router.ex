@@ -39,8 +39,8 @@ defmodule ElixirEcommerceWeb.Router do
   scope "/", ElixirEcommerceWeb do
     pipe_through [:browser, :auth]
 
-    get "/", PageController, :index
-    get "/index", PageController, :index
+    get "/", PublicController, :index
+    get "/index", PublicController, :index
 
     get "/login", SessionController, :new
     post "/login", SessionController, :login
