@@ -10,7 +10,7 @@ defmodule ElixirEcommerce.SubSellTest do
   }
 
   @user_attrs %{email: "sr.alan.bispo@gmail.com", password: "123456", username: "abmbispo", role: "client"}
-  @product_attrs %{name: "NBA shorts", amount: 100, price: 1999}
+  @product_attrs %{name: "NBA shorts", amount: 100, price: 1999, description: Faker.Lorem.paragraph(5)}
   @department_attrs %{name: "Sports"}
   @valid_attrs %{amount_sold: 5}
   @invalid_attrs %{amount_sold: 0}

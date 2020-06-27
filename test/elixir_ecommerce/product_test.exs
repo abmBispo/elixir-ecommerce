@@ -6,10 +6,10 @@ defmodule ElixirEcommerce.ProductTest do
   }
 
   @department_attrs %{name: "Sports"}
-  @valid_attrs_first %{name: "NBA shorts", amount: 100, price: 1999}
-  @valid_attrs_second %{name: "NBA shirts", amount: 110, price: 2999}
-  @valid_attrs_third %{name: "NBA shoes", amount: 150, price: 5999}
-  @update_attrs %{name: "NBA shoes"}
+  @valid_attrs_first %{name: "NBA shorts", amount: 100, price: 1999, description: Faker.Lorem.paragraph(5)}
+  @valid_attrs_second %{name: "NBA shirts", amount: 110, price: 2999, description: Faker.Lorem.paragraph(5)}
+  @valid_attrs_third %{name: "NBA shoes", amount: 150, price: 5999, description: Faker.Lorem.paragraph(5)}
+  @update_attrs %{name: "NBA shoes", description: Faker.Lorem.paragraph(5)}
   @invalid_attrs %{name: ""}
 
   def department_fixture(attrs \\ %{}) do
