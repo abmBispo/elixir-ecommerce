@@ -1,10 +1,11 @@
 defmodule ElixirEcommerce.Product do
   use Ecto.Schema
+  use Arc.Ecto.Schema
   import Ecto.Query
   import Ecto.Changeset
 
   alias ElixirEcommerce.{
-    ProductImages
+    ProductImages,
     Repo,
     Department,
     Product
@@ -45,7 +46,7 @@ defmodule ElixirEcommerce.Product do
     |> Repo.insert()
   end
 
-  def all(params \\ %{page: 1, page_size: 25}) do
+  def all(params \\ %{page: 1, page_size: 9}) do
     query =
       Product
       |> preload(:department)

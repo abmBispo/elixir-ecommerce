@@ -2,8 +2,10 @@ defmodule ElixirEcommerce.ProductImages do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias ElixirEcommerce.Storage.Image
+
   schema "product_images" do
-    field :image, :string
+    field :image, Image.Type
 
     timestamps()
   end
