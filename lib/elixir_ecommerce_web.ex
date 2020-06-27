@@ -67,6 +67,7 @@ defmodule ElixirEcommerceWeb do
 
       import ElixirEcommerceWeb.ErrorHelpers
       import ElixirEcommerceWeb.Gettext
+      import ElixirEcommerceWeb.ApplicationView
       alias ElixirEcommerceWeb.Router.Helpers, as: Routes
     end
   end

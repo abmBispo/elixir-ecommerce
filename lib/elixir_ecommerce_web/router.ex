@@ -42,6 +42,9 @@ defmodule ElixirEcommerceWeb.Router do
     get "/", PublicController, :index
     get "/index", PublicController, :index
 
+    resources "/products", ProductsController, only: [:show]
+    # get "/products/:product_id", ProductsController, :show
+
     get "/login", SessionController, :new
     post "/login", SessionController, :login
     get "/logout", SessionController, :logout

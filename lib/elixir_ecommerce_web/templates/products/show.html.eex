@@ -41,26 +41,4 @@
       </div>
     </div>
 
-    <div class="row mx-auto">
-      <%= Enum.map @products, fn(product) -> %>
-        <div class="col-md-4 col-12 mb-5 p-0 p-md-2">
-          <div class="card h-100">
-            <a href="#">
-              <img class="card-img-top" src="http://placehold.it/700x400" alt="">
-            </a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <%= link(product.name, to: show_product(product)) %>
-              </h4>
-              <h5><%= product_price(product) %></h5>
-              <p class="card-text"><%= product.description %></p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
 </div>
