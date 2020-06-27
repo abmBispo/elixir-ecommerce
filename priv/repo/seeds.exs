@@ -48,6 +48,7 @@ Enum.each(0..50, fn(x) ->
   {:ok, product} =
     %{
       name: "#{Enum.at(product_names, Enum.random(0..7))} - #{x + 1}",
+      description: Faker.Lorem.paragraph(2),
       amount: Enum.random(0..100),
       price: Enum.random(1000..25000)
     }

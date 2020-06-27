@@ -13,6 +13,7 @@ defmodule ElixirEcommerce.Product do
 
   schema "products" do
     field :name, :string
+    field :description, :string
     field :amount, :integer
     field :price, :integer
     belongs_to :department, Department
@@ -33,11 +34,11 @@ defmodule ElixirEcommerce.Product do
       |> cast(attrs, [:name, :amount, :price, :description])
       |> validate_required([:name, :amount, :price, :department, :description])
     end
-    unless is_nil(attrs[:images]) do
-      attrs[:image] |> Enum.each fn(image) ->
-        cast_attachments(product, image, [:image])
-      end
-    end
+    # unless is_nil(attrs[:images]) do
+    #   attrs[:image] |> Enum.each fn(image) ->
+    #     cast_attachments(product, image, [:image])
+    #   end
+    # end
   end
 
   def create(attrs \\ %{}) do
