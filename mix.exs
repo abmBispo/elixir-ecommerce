@@ -33,6 +33,7 @@ defmodule ElixirEcommerce.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:faker, "~> 0.13", only: :test},
       {:money, "~> 1.7"},
       {:arc_ecto, "~> 0.11.3"},
       {:scrivener_ecto, "~> 2.0"},

@@ -25,13 +25,13 @@ defmodule ElixirEcommerce.Product do
   def changeset(product, attrs) do
     product = unless is_nil(attrs[:department]) do
       product
-      |> cast(attrs, [:name, :amount, :price])
+      |> cast(attrs, [:name, :amount, :price, :description])
       |> put_assoc(:department, attrs[:department])
-      |> validate_required([:name, :amount, :price, :department])
+      |> validate_required([:name, :amount, :price, :department, :description])
     else
       product
-      |> cast(attrs, [:name, :amount, :price])
-      |> validate_required([:name, :amount, :price, :department])
+      |> cast(attrs, [:name, :amount, :price, :description])
+      |> validate_required([:name, :amount, :price, :department, :description])
     end
     unless is_nil(attrs[:images]) do
       attrs[:image] |> Enum.each fn(image) ->
