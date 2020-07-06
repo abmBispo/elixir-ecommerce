@@ -1,5 +1,6 @@
 defmodule ElixirEcommerceWeb.SessionController do
   use ElixirEcommerceWeb, :controller
+  plug :put_layout, "login.html"
 
   alias ElixirEcommerce.{
     UserManager,

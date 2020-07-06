@@ -35,9 +35,13 @@ defmodule ElixirEcommerceWeb.Router do
     plug Guardian.Plug.EnsureAuthenticated
   end
 
+  pipeline :login_layout do
+    plug :put_layout, {LayoutView, :login}
+  end
+
   # Maybe logged in routes
   scope "/", ElixirEcommerceWeb do
-    pipe_through [:browser, :auth]
+    pipe_through [:browser]
 
     get "/", PublicController, :index
     get "/index", PublicController, :index
@@ -47,14 +51,13 @@ defmodule ElixirEcommerceWeb.Router do
 
     get "/login", SessionController, :new
     post "/login", SessionController, :login
-    get "/logout", SessionController, :logout
+    post "/logout", SessionController, :logout
   end
 
   # Definitely logged in scope
   scope "/", ElixirEcommerceWeb do
     pipe_through [:browser, :auth, :ensure_auth]
 
-    get "/", HomeController, :index
-    get "/index", HomeController, :index
+    get "/home", HomeController, :index
   end
 end

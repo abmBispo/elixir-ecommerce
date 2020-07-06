@@ -53,7 +53,7 @@
                 <%= link(product.name, to: show_product(product)) %>
               </h4>
               <h5><%= product_price(product) %></h5>
-              <p class="card-text"><%= product.description %></p>
+              <p class="card-text" style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;"><%= product.description %></p>
             </div>
             <div class="card-footer">
               <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>

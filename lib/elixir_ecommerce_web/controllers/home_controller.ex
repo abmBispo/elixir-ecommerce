@@ -4,6 +4,6 @@ defmodule ElixirEcommerceWeb.HomeController do
 
   def index(conn, _params) do
     user = Guardian.Plug.current_resource(conn)
-    render(conn, "protected.html", current_user: user)
+    render(conn, "index.html", current_user: user)
   end
 end
