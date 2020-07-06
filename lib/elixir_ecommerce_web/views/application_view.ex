@@ -13,4 +13,12 @@ defmodule ElixirEcommerceWeb.ApplicationView do
   def show_product(%Product{} = product) do
     Routes.products_path(Endpoint, :show, product.id)
   end
+
+  def home_path do
+    Routes.home_path(Endpoint, :index)
+  end
+
+  def session_path do
+    Routes.session_path(Endpoint, :new)
+  end
 end

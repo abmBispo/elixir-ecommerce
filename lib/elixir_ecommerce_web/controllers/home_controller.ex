@@ -1,5 +1,6 @@
 defmodule ElixirEcommerceWeb.HomeController do
   use ElixirEcommerceWeb, :controller
+  alias ElixirEcommerce.UserManager.User
   plug ElixirEcommerceWeb.Authorize, resource: User
 
   def index(conn, _params) do

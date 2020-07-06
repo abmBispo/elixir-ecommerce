@@ -41,13 +41,12 @@ defmodule ElixirEcommerceWeb.Router do
 
   # Maybe logged in routes
   scope "/", ElixirEcommerceWeb do
-    pipe_through [:browser]
+    pipe_through [:browser, :auth]
 
     get "/", PublicController, :index
     get "/index", PublicController, :index
 
     resources "/products", ProductsController, only: [:show]
-    # get "/products/:product_id", ProductsController, :show
 
     get "/login", SessionController, :new
     post "/login", SessionController, :login

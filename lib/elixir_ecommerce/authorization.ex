@@ -1,5 +1,6 @@
 defmodule ElixirEcommerce.Authorization do
   alias __MODULE__
+  alias ElixirEcommerce.UserManager.User
 
   defstruct role: nil, create: %{}, read: %{}, update: %{}, delete: %{}
 
@@ -35,9 +36,10 @@ defmodule ElixirEcommerce.Authorization do
   end
 
   # Defining roles
-  def can("user" = role) do
+  def can("client" = role) do
     grant(role)
     |> read!(Product)
+    |> read!(User)
   end
 
   def can("admin" = role) do

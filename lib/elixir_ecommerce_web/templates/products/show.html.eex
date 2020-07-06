@@ -1,5 +1,4 @@
 <div class="row p-md-5">
-
   <div class="col-md-2 col-12 p-0 p-md-2">
     <h1 class="my-4"><strong>E</strong><small>lixir</small><strong>E</strong><small>commerce</small></h1>
     <div class="list-group">
@@ -8,17 +7,13 @@
       <% end %>
     </div>
   </div>
-
   <div class="col-md-10 col-12 p-0 p-md-2">
     <div class="row mx-auto">
-
       <div class="col-md-11 col-12 p-0 p-md-2 mx-auto card">
-
         <div class="card">
           <div class="card-header">
             <h1><%= @product.name %></h1>
           </div>
-
           <div id="carouselExampleIndicators" class="carousel slide my-4 card-img-top mx-auto" style="max-width: 850px;" data-ride="carousel">
             <ol class="carousel-indicators">
               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -45,7 +40,6 @@
               <span class="sr-only">Next</span>
             </a>
           </div>
-
           <div class="card-body">
             <h5 class="card-title">Descrição</h5>
             <p class="card-text text-justify p-4">
@@ -54,7 +48,6 @@
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-
               <table class="table">
                 <thead>
                   <tr>
@@ -77,17 +70,14 @@
                   </tr>
                 </tbody>
               </table>
-
             </li>
           </ul>
           <div class="card-body text-right">
-            <a href="#" class="btn btn-lg btn-outline-primary">Adicionar a lista de desejos</a>
-            <a href="#" class="btn btn-lg btn-success">Por no carrinho</a>
+            <a href="#" class="btn btn-outline-primary">Adicionar a lista de desejos</a>
+            <a href="#" class="btn btn-success">Por no carrinho</a>
           </div>
         </div>
-
       </div>
     </div>
   </div>
-
 </div>

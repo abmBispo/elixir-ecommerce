@@ -3,14 +3,19 @@ defmodule ElixirEcommerceWeb.Authorize do
   import Phoenix.Controller
   import ElixirEcommerce.Authorization
   alias ElixirEcommerceWeb.Router.Helpers, as: Routes
+  alias ElixirEcommerce.UserManager.User
 
   def init(opts), do: opts
 
   def call(conn, opts) do
-    user = Guardian.Plug.current_resource(conn)
+    user = (Guardian.Plug.current_resource(conn) || %User{role: "client"})
     role = user.role
     resource = Keyword.get(opts, :resource)
     action = action_name(conn)
+
+    action |> IO.inspect(label: "action")
+    role |> IO.inspect(label: "role")
+    resource |> IO.inspect(label: "resource")
 
     check(action, role, resource)
     |> continue(conn)
@@ -24,7 +29,7 @@ defmodule ElixirEcommerceWeb.Authorize do
     |> halt()
   end
 
-  defp check(:index, role, resource) do
+  defp check(action, role, resource) when action in [:index, :show] do
     can(role) |> read?(resource)
   end
 
