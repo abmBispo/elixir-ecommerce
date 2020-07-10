@@ -1,11 +1,9 @@
 defmodule ElixirEcommerceWeb.ProductsController do
   use ElixirEcommerceWeb, :controller
   alias ElixirEcommerce.{
-    UserManager,
     UserManager.User,
     Product,
-    Department,
-    Repo
+    Department
   }
 
   plug ElixirEcommerceWeb.Authorize, resource: User

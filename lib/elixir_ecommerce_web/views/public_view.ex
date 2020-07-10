@@ -1,8 +1,7 @@
 defmodule ElixirEcommerceWeb.PublicView do
   use ElixirEcommerceWeb, :view
   alias ElixirEcommerce.{
-    Product,
-    Department
+    Product
   }
 
   # Decorate

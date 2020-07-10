@@ -49,10 +49,9 @@ defmodule ElixirEcommerce.Product do
   end
 
   def all(params \\ %{page: 1, page_size: 9}) do
-    query =
-      Product
-      |> preload(:department)
-      |> Repo.paginate(params)
+    Product
+    |> preload(:department)
+    |> Repo.paginate(params)
   end
 
   def retrieve(id) when is_number(id), do: Repo.get!(Product, id)

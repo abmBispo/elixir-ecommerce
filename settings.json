@@ -1,0 +1,9 @@
+{
+    "elixirLinter.useStrict": true,
+    "elixirLinter.defaultSeverity": 1,
+    "elixirLinter.consistencySeverity": 1,
+    "elixirLinter.designSeverity": 1,
+    "elixirLinter.refactoringSeverity": 1,
+    "elixirLinter.readabilitySeverity": 1,
+    "elixirLinter.warningsSeverity": 1
+}

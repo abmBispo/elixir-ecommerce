@@ -23,11 +23,11 @@
               <ul class="navbar-nav ml-auto">
                 <%= if @current_user do %>
                   <li class="nav-item active">
-                    <%= link("Home", to: home_path, class: "nav-link") %>
+                    <%= link("Home", to: home_path(), class: "nav-link") %>
                   </li>
-                <%= else %>
+                <% else %>
                   <li class="nav-item">
-                    <%= link("Entrar", to: session_path, class: "nav-link") %>
+                    <%= link("Entrar", to: session_path(), class: "nav-link") %>
                   </li>
                 <% end %>
               </ul>

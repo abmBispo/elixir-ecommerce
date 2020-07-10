@@ -2,9 +2,13 @@ defmodule ElixirEcommerce.ProductImages do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias ElixirEcommerce.Storage.Image
+  alias ElixirEcommerce.{
+    Storage.Image,
+    Product
+  }
 
   schema "product_images" do
+    belongs_to :product, Product
     field :image, Image.Type
 
     timestamps()
