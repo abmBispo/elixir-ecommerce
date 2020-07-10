@@ -13,10 +13,6 @@ defmodule ElixirEcommerceWeb.Authorize do
     resource = Keyword.get(opts, :resource)
     action = action_name(conn)
 
-    action |> IO.inspect(label: "action")
-    role |> IO.inspect(label: "role")
-    resource |> IO.inspect(label: "resource")
-
     check(action, role, resource)
     |> continue(conn)
   end
