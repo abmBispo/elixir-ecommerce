@@ -1,0 +1,42 @@
+{
+  "repository": {},
+  "description": " ",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "webpack --mode production",
+    "watch": "webpack --mode development --watch"
+  },
+  "dependencies": {
+    "phoenix": "file:deps/phoenix",
+    "phoenix_html": "file:deps/phoenix_html",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5",
+    "babel-loader": "^8.1.0",
+    "bootstrap": "^4.5.0",
+    "copy-webpack-plugin": "^6.0.3",
+    "css-loader": "^3.6.0",
+    "file-loader": "^6.0.0",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.5.1",
+    "mini-css-extract-plugin": "^0.4.0",
+    "optimize-css-assets-webpack-plugin": "^4.0.0",
+    "popper.js": "^1.16.1",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.2",
+    "style-loader": "^1.2.1",
+    "uglifyjs-webpack-plugin": "^1.2.4",
+    "webpack": "4.37.0",
+    "webpack-cli": "^3.2.1"
+  }
+}

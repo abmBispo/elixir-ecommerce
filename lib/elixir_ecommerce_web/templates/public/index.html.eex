@@ -1,7 +1,7 @@
 <div class="row p-md-5">
 
   <div class="col-md-2 col-12 p-0 p-md-2">
-    <h1 class="my-4"><strong>E</strong><small>lixir</small><strong>E</strong><small>commerce</small></h1>
+    <div id='app-title'></div>
     <div class="list-group">
       <%= Enum.map @departments, fn(department) -> %>
         <%= link(department.name, to: department_products(department), class: "list-group-item") %>

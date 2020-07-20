@@ -29,7 +29,6 @@ config :elixir_ecommerce, ElixirEcommerceWeb.Endpoint,
       "--mode",
       "development",
       "--watch-stdin",
-      cd: Path.expand("../assets", __DIR__)
     ]
   ]
 
