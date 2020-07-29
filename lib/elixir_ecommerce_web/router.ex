@@ -59,4 +59,12 @@ defmodule ElixirEcommerceWeb.Router do
 
     get "/home", HomeController, :index
   end
+
+
+  # Definitely logged in scope
+  scope "/admin", ElixirEcommerceWeb.Admin, as: :admin do
+    pipe_through [:browser, :auth, :ensure_auth]
+
+    get "/products/new", ProductsController, :new
+  end
 end

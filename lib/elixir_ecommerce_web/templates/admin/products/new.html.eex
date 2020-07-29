@@ -1,0 +1,5 @@
+<div class="row p-md-5 mt-4">
+  <div class="col-12">
+    <div id="react-new-product-form"></div>
+  </div>
+</div>
