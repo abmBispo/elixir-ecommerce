@@ -17,7 +17,7 @@
 erl_crash.dump
 
 # Uploads for development environment
-/uploads
+assets/static/images/uploads
 
 # Also ignore archive artifacts (built via "mix archive.build").
 *.ez

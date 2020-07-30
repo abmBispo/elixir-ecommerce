@@ -2,8 +2,8 @@ defmodule ElixirEcommerce.Uploader.Image do
   use Arc.Definition
   use Arc.Ecto.Definition
 
-  @versions [:original]
-  @extension_whitelist ~w(.jpg .jpeg .gif .png)
+  @versions [:original, :thumb]
+  @extension_whitelist ~w(.jpg .jpeg .gif .png .webp)
 
   def acl(:original, _), do: :public_read
 
@@ -16,16 +16,14 @@ defmodule ElixirEcommerce.Uploader.Image do
     Enum.member?(@extension_whitelist, file_extension)
   end
 
-  def transform(:thumb, _) do
-    {:convert, "-thumbnail 100x100^ -gravity center -extent 100x100 -format png", :png}
+  def filename(_, {image, _}) do
+    image.file_name
+      |> Path.basename('.jpg')
+      |> Path.basename('.webp')
   end
 
-  def filename(version, {_, image}) do
-    Ecto.UUID.generate()
-  end
-
-  def storage_dir(_, {_, product}) do
-    "uploads/products"
+  def storage_dir(_, {_, product_image}) do
+    "priv/static/images/uploads/products/#{product_image.product_id || product_image.product.id}"
   end
 
   def default_url(:original) do

@@ -20,7 +20,7 @@ defmodule ElixirEcommerce.Product do
     field :amount, :integer
     field :price, :integer
     belongs_to :department, Department
-    has_many :images, ProductImages
+    has_many :images, ProductImages, on_delete: :delete_all
 
     timestamps()
   end
@@ -57,12 +57,23 @@ defmodule ElixirEcommerce.Product do
   def all(params \\ %{page: 1, page_size: 9}) do
     Product
       |> preload(:department)
+      |> preload(:images)
       |> order_by(desc: :inserted_at)
       |> Repo.paginate(params)
   end
 
-  def retrieve(id) when is_number(id), do: Repo.get!(Product, id)
-  def retrieve(id) when is_binary(id), do: Repo.get!(Product, id)
+  def retrieve(id) when is_number(id) do
+    Product
+      |> preload(:images)
+      |> Repo.get!(id)
+  end
+
+  def retrieve(id) when is_binary(id) do
+    Product
+      |> preload(:images)
+      |> Repo.get!(id)
+  end
+
   def retrieve(params) do
     Product
       |> preload(:department)
