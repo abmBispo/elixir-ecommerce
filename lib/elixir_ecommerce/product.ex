@@ -37,9 +37,6 @@ defmodule ElixirEcommerce.Product do
     product
     |> cast(attrs, @cast_fields)
     |> validate_required(@required_fields)
-    #   attrs[:image] |> Enum.each fn(image) ->
-    #     cast_attachments(product, image, [:image])
-    #   end
   end
 
   def create(attrs \\ %{}) do
@@ -51,6 +48,7 @@ defmodule ElixirEcommerce.Product do
   def all(params \\ %{page: 1, page_size: 9}) do
     Product
     |> preload(:department)
+    |> order_by(desc: :inserted_at)
     |> Repo.paginate(params)
   end
 

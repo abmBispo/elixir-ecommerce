@@ -17,6 +17,10 @@
         Description: <%= text_input(f, :description) %>
       </label>
 
+      <label>
+        Department: <%= select(f, :department_id, @departments) %>
+      </label>
+
       <div id="product-images"></div>
       <%= submit "Submit" %>
     <% end %>
