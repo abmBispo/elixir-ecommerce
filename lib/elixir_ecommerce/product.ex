@@ -1,6 +1,5 @@
 defmodule ElixirEcommerce.Product do
   use Ecto.Schema
-  use Arc.Ecto.Schema
   import Ecto.Query
   import Ecto.Changeset
 
@@ -8,7 +7,8 @@ defmodule ElixirEcommerce.Product do
     ProductImages,
     Repo,
     Department,
-    Product
+    Product,
+    ProductImages
   }
 
   @required_fields [:name, :amount, :price, :department, :description]
@@ -28,42 +28,51 @@ defmodule ElixirEcommerce.Product do
   @doc false
   def changeset(product, attrs) when is_map_key(attrs, :department) do
     product
-    |> cast(attrs, @cast_fields)
-    |> put_assoc(:department, attrs[:department])
-    |> validate_required(@required_fields)
+      |> cast(attrs, @cast_fields)
+      |> put_assoc(:department, attrs[:department])
+      |> validate_required(@required_fields)
   end
 
   def changeset(product, attrs) do
     product
-    |> cast(attrs, @cast_fields)
-    |> validate_required(@required_fields)
+      |> cast(attrs, @cast_fields)
+      |> validate_required(@required_fields)
   end
 
-  def create(attrs \\ %{}) do
-    %Product{}
-    |> Product.changeset(attrs)
-    |> Repo.insert()
+  def create(attrs) do
+    {:ok, product} =
+      %Product{}
+      |> Product.changeset(attrs)
+      |> Repo.insert()
+
+    if is_map_key(attrs, :images) do
+      Enum.each attrs[:images], fn ({_, image}) ->
+        {:ok, _} = ProductImages.create(image: image, product: product)
+      end
+    end
+
+    {:ok, product}
   end
 
   def all(params \\ %{page: 1, page_size: 9}) do
     Product
-    |> preload(:department)
-    |> order_by(desc: :inserted_at)
-    |> Repo.paginate(params)
+      |> preload(:department)
+      |> order_by(desc: :inserted_at)
+      |> Repo.paginate(params)
   end
 
   def retrieve(id) when is_number(id), do: Repo.get!(Product, id)
   def retrieve(id) when is_binary(id), do: Repo.get!(Product, id)
   def retrieve(params) do
     Product
-    |> preload(:department)
-    |> where(^params)
+      |> preload(:department)
+      |> where(^params)
   end
 
   def update(%Product{} = product, attrs \\ %{}) do
     product
-    |> Product.changeset(attrs)
-    |> Repo.update()
+      |> Product.changeset(attrs)
+      |> Repo.update()
   end
 
   def delete(%Product{} = product) do

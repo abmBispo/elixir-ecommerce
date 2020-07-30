@@ -25,7 +25,7 @@ defmodule ElixirEcommerceWeb.Admin.ProductsController do
       |> create_reply(conn)
   end
 
-  defp create_reply({:ok, product}, conn) do
+  defp create_reply({:ok, _}, conn) do
     conn
       |> put_flash(:info, "Successful product creation!")
       |> redirect(to: "/")

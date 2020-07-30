@@ -1,10 +1,13 @@
 defmodule ElixirEcommerce.ProductImages do
   use Ecto.Schema
+  use Arc.Ecto.Schema
   import Ecto.Changeset
 
   alias ElixirEcommerce.{
-    Storage.Image,
-    Product
+    Uploader.Image,
+    ProductImages,
+    Product,
+    Repo
   }
 
   schema "product_images" do
@@ -15,9 +18,17 @@ defmodule ElixirEcommerce.ProductImages do
   end
 
   @doc false
-  def changeset(product_images, attrs) do
-    product_images
-    |> cast(attrs, [:image])
-    |> validate_required([:image])
+  def changeset(product_image, attrs) do
+    product_image
+      |> cast(attrs, [])
+      |> put_assoc(:product, attrs[:product])
+      |> cast_attachments(attrs, [:image])
+      |> validate_required([:image, :product])
+  end
+
+  def create(image: image, product: product) do
+    %ProductImages{}
+      |> changeset(%{image: image, product: product})
+      |> Repo.insert()
   end
 end
