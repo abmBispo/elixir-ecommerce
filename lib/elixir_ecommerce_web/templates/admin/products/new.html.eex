@@ -1,5 +1,24 @@
 <div class="row p-md-5 mt-4">
   <div class="col-12">
-    <div id="react-new-product-form"></div>
+    <%= form_for @changeset, create_product(), [multipart: true], fn f -> %>
+      <label>
+        Name: <%= text_input(f, :name) %>
+      </label>
+
+      <label>
+        Amount: <%= number_input(f, :amount) %>
+      </label>
+
+      <label>
+        Price: <%= number_input(f, :price) %>
+      </label>
+
+      <label>
+        Description: <%= text_input(f, :description) %>
+      </label>
+
+      <div id="product-images"></div>
+      <%= submit "Submit" %>
+    <% end %>
   </div>
 </div>

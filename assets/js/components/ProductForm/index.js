@@ -2,14 +2,12 @@ import React from 'react';
 import { Formik, FieldArray } from "formik";
 import If from '../templates/If';
 
-const initialValues = { images: [] };
-
-function renderImages(images, arrayHelpers, setFieldValue) {
+function renderImages(images, setFieldValue) {
   return images.map((image, index) => (
     <input
       key={index}
       type="file"
-      name={`images[${index}]`}
+      name={`product[images][${index}]`}
       onChange={(event) => {
         setFieldValue(`images[${index}]`, event.currentTarget.files[0]);
       }} />
@@ -24,7 +22,7 @@ function formContent({ values, setFieldValue }) {
           render={(arrayHelpers) => (
             <div>
               <If test={values.images.length > 0}>
-                {renderImages(values.images, arrayHelpers, setFieldValue)}
+                {renderImages(values.images, setFieldValue)}
               </If>
               <button type="button" onClick={() => arrayHelpers.push("")}>Add a Image</button>
             </div>
@@ -35,8 +33,8 @@ function formContent({ values, setFieldValue }) {
   );
 }
 
-export default () => (
-  <Formik initialValues={initialValues}>
+export default (props) => (
+  <Formik initialValues={{ images: [] }}>
     {formContent}
   </Formik>
 );

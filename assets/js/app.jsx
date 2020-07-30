@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ProductForm from './components/ProductForm';
 
-const new_product = document.getElementById('react-new-product-form');
+const new_product = document.getElementById('product-images');
 
 if (new_product) {
   ReactDOM.render(<ProductForm />, new_product);

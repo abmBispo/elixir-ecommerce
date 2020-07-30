@@ -7,6 +7,10 @@ defmodule ElixirEcommerceWeb.Admin.ProductsView do
     Department
   }
 
+  def create_product do
+    Routes.admin_products_path(Endpoint, :create)
+  end
+
   def department_products(%Department{} = department) do
     Routes.public_path(Endpoint, :index, department: department.id)
   end

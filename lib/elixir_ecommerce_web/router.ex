@@ -66,5 +66,6 @@ defmodule ElixirEcommerceWeb.Router do
     pipe_through [:browser, :auth, :ensure_auth]
 
     get "/products/new", ProductsController, :new
+    post "/products/create", ProductsController, :create
   end
 end
