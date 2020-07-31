@@ -4,26 +4,21 @@ defmodule ElixirEcommerceWeb.Admin.ProductsView do
   alias ElixirEcommerceWeb.Router.Helpers, as: Routes
   alias ElixirEcommerce.{
     Product,
-    Department
+    Department,
+    ProductsController
   }
 
   def create_product do
     Routes.admin_products_path(Endpoint, :create)
   end
 
-  def department_products(%Department{} = department) do
-    Routes.public_path(Endpoint, :index, department: department.id)
-  end
-
-  def show_product(%Product{} = product) do
-    Routes.products_path(Endpoint, :show, product.id)
-  end
-
-  def home_path do
-    Routes.home_path(Endpoint, :index)
-  end
-
-  def session_path do
-    Routes.session_path(Endpoint, :new)
+  def array_input(form, field_name, target, field_type) do
+    assigns = [
+      field_name: field_name,
+      form_name: form.name,
+      field_type: field_type,
+      target: target
+    ]
+    render(ElixirEcommerceWeb.FieldArrayView, "field_array.html", assigns)
   end
 end

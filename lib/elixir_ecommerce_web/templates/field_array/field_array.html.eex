@@ -1,0 +1,6 @@
+<div
+  data-target="<%= @target %>"
+  data-input-type="<%= @field_type %>"
+  data-form-name="<%= @form_name %>"
+  data-field-name="<%= @field_name %>" >
+</div>

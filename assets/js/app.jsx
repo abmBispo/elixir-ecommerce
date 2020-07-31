@@ -5,8 +5,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ProductForm from './components/ProductForm';
 
-const new_product = document.getElementById('product-images');
+const images_array = document.querySelector('[data-target="images"]');
+const attributes_array = document.querySelector('[data-target="attributes"]');
 
-if (new_product) {
-  ReactDOM.render(<ProductForm />, new_product);
+if (images_array) {
+  ReactDOM.render(<ProductForm {...images_array.dataset} />, images_array);
+}
+
+if (attributes_array) {
+  ReactDOM.render(<ProductForm {...attributes_array.dataset} />, attributes_array);
 }

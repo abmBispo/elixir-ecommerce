@@ -20,8 +20,16 @@
       <label>
         Department: <%= select(f, :department_id, @departments) %>
       </label>
+      <br>
+      <label>
+        Images: <%= array_input(f, :images, "images", :file) %>
+      </label>
+      <br>
+      <label>
+        Attributes: <%= array_input(f, :attributes, "attributes", :text) %>
+      </label>
 
-      <div id="product-images"></div>
+      <br>
       <%= submit "Submit" %>
     <% end %>
   </div>
