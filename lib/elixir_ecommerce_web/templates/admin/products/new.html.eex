@@ -22,11 +22,11 @@
       </label>
       <br>
       <label>
-        Images: <%= array_input(f, :images, "images", :file) %>
+        Images: <%= array_input(f, :images, "images") %>
       </label>
       <br>
       <label>
-        Attributes: <%= array_input(f, :attributes, "attributes", :text) %>
+        Attributes: <%= array_input(f, :attributes, "attributes") %>
       </label>
 
       <br>
