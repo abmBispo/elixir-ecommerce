@@ -1,36 +1,47 @@
 <div class="row p-md-5 mt-4">
-  <div class="col-12">
+  <div class="col-8 mx-auto">
+    <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
     <%= form_for @changeset, create_product(), [multipart: true], fn f -> %>
-      <label>
-        Name: <%= text_input(f, :name) %>
-      </label>
-
-      <label>
-        Amount: <%= number_input(f, :amount) %>
-      </label>
-
-      <label>
-        Price: <%= number_input(f, :price) %>
-      </label>
-
-      <label>
-        Description: <%= text_input(f, :description) %>
-      </label>
-
-      <label>
-        Department: <%= select(f, :department_id, @departments) %>
-      </label>
-      <br>
-      <label>
-        Images: <%= array_input(f, :images, "images") %>
-      </label>
-      <br>
-      <label>
-        Attributes: <%= array_input(f, :attributes, "attributes") %>
-      </label>
-
-      <br>
-      <%= submit "Submit" %>
+      <div class="form-row">
+        <div class="col-7">
+          <label for="product_name">Product name</label>
+          <%= text_input(f, :name, class: "form-control") %>
+        </div>
+        <div class="col-1">
+          <label for="product_amount">Amount</label>
+          <%= number_input(f, :amount, class: "form-control") %>
+        </div>
+        <div class="col-2">
+          <label for="product_price">Price</label>
+          <%= telephone_input(f, :price, class: "form-control") %>
+        </div>
+        <div class="col-2">
+          <label for="product_department_id">Department</label>
+          <%= select(f, :department_id, @departments, class: "form-control") %>
+        </div>
+      </div>
+      <div class="form-row mt-4">
+        <div class="col-12">
+          <label for="product_description">Description</label>
+          <%= textarea(f, :description, class: "form-control", rows: 5) %>
+        </div>
+      </div>
+      <div class="form-row mt-4">
+        <div class="col-12">
+          <%= array_input(f, :images, "images") %>
+        </div>
+      </div>
+      <div class="form-row mt-4">
+        <div class="col-12">
+          <%= array_input(f, :attributes, "attributes") %>
+        </div>
+      </div>
+      <div class="form-row mt-4">
+        <div class="col-12 text-right">
+          <%= submit("Back", class: "btn btn-outline-danger mr-2") %>
+          <%= submit("Save product", class: "btn btn-success") %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

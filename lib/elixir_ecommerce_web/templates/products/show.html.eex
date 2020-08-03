@@ -14,11 +14,11 @@
           <div class="card-header">
             <h1><%= @product.name %></h1>
           </div>
-          <div id="carouselExampleIndicators" class="carousel slide my-4 card-img-top mx-auto" style="max-width: 850px;" data-ride="carousel">
+          <div id="carousel-indicators" class="carousel slide my-4 card-img-top mx-auto" style="max-width: 850px;" data-ride="carousel">
             <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              <%= Enum.with_index(@product.images) |> Enum.map fn ({image, index}) -> %>
+                <li data-target="#carousel-indicators" data-slide-to="<%= index %>" class='<%= if index == 0, do: "active", else: "" %>'></li>
+              <% end %>
             </ol>
 
             <div class="carousel-inner" role="listbox">
@@ -29,11 +29,11 @@
               <% end %>
             </div>
 
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#carousel-indicators" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#carousel-indicators" role="button" data-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
             </a>

@@ -40,18 +40,10 @@ defmodule ElixirEcommerce.Product do
   end
 
   def create(attrs) do
-    {:ok, product} =
-      %Product{}
+    %Product{}
       |> Product.changeset(attrs)
       |> Repo.insert()
-
-    if is_map_key(attrs, :images) do
-      Enum.each attrs[:images], fn ({_, image}) ->
-        {:ok, _} = ProductImages.create(image: image, product: product)
-      end
-    end
-
-    {:ok, product}
+      |> create_product_images(attrs)
   end
 
   def all(params \\ %{page: 1, page_size: 9}) do
@@ -88,5 +80,15 @@ defmodule ElixirEcommerce.Product do
 
   def delete(%Product{} = product) do
     Repo.delete(product)
+  end
+
+  defp create_product_images({:error, errors}, attrs), do: {:error, errors, attrs}
+  defp create_product_images({:ok, product}, attrs) do
+    if is_map_key(attrs, :images) do
+      Enum.each attrs[:images], fn ({_, image}) ->
+        {:ok, _} = ProductImages.create(image: image, product: product)
+      end
+    end
+    {:ok, product, attrs}
   end
 end

@@ -8,11 +8,11 @@ defmodule ElixirEcommerceWeb.Admin.ProductsController do
   }
   plug ElixirEcommerceWeb.Authorize, resource: User
 
-  def new(conn, _) do
+  def new(conn, params) do
     user = Guardian.Plug.current_resource(conn)
     changeset =
       %Product{}
-      |> Product.changeset(%{})
+      |> Product.changeset(params)
     departments =
       Department.all()
       |> Enum.map(fn department -> {department.name, department.id} end)
@@ -25,16 +25,16 @@ defmodule ElixirEcommerceWeb.Admin.ProductsController do
       |> create_reply(conn)
   end
 
-  defp create_reply({:ok, _}, conn) do
+  defp create_reply({:ok, _, _}, conn) do
     conn
       |> put_flash(:info, "Successful product creation!")
       |> redirect(to: "/")
       |> halt()
   end
 
-  defp create_reply({:error, errors}, conn) do
+  defp create_reply({:error, errors, attrs}, conn) do
     conn
-      |> put_flash(:error, "Unsuccessful product creation! Errors #{to_string(errors)}")
-      |> new(%{})
+      |> put_flash(:error, "Unsuccessful product creation!")
+      |> new(attrs)
   end
 end
