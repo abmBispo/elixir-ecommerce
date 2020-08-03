@@ -1,18 +1,7 @@
 import React from 'react';
 import { Formik, FieldArray } from "formik";
 import If from '../../templates/If';
-
-function renderImages(images, setFieldValue, formName, fieldName) {
-  return images.map((image, index) => (
-    <input
-      key={index}
-      type="file"
-      name={`${formName}[${fieldName}][${index}]`}
-      onChange={(event) => {
-        setFieldValue(`[${fieldName}][${index}]`, event.currentTarget.files[0]);
-      }} />
-  ));
-}
+import Thumb from './Thumb';
 
 function formContent({ values, setFieldValue }) {
   return (
@@ -23,9 +12,25 @@ function formContent({ values, setFieldValue }) {
           render={(arrayHelpers) => (
             <>
               <If test={values[values.fieldName].length > 0}>
-                {renderImages(values[values.fieldName], setFieldValue, values.formName, values.fieldName, values.inputType)}
+                {
+                  values[values.fieldName].map((value, index) => {
+                    return (
+                      <div key={1000 - index}>
+                        <input
+                          key={index}
+                          type="file"
+                          name={`${values.formName}[${values.fieldName}][${index}]`}
+                          onChange={(event) => setFieldValue(`${values.fieldName}[${index}].file`, event.currentTarget.files[0])} />
+                        <Thumb key={2000 - index} file={values[values.fieldName][index].file} />
+                      </div>
+                    )
+                  })
+                }
               </If>
-              <button type="button" onClick={() => arrayHelpers.push("")}>+</button>
+              <br />
+              <button type="button" onClick={() => arrayHelpers.push({ file: null })} className="btn btn-outline-primary">
+                Add image to product
+              </button>
             </>
           )}
         />
@@ -35,8 +40,8 @@ function formContent({ values, setFieldValue }) {
 }
 
 export default (props) => {
-  const { formName, fieldName, inputType } = props;
-  const initialValues = { formName: formName, fieldName: fieldName, inputType: inputType };
+  const { formName, fieldName } = props;
+  const initialValues = { formName: formName, fieldName: fieldName };
   initialValues[fieldName] = [];
 
   return (
