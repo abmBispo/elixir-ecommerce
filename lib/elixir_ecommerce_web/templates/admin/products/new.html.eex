@@ -1,33 +1,35 @@
 <div class="row p-md-5 mt-4">
   <div class="col-8 mx-auto">
     <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    <h2>Product registration</h2>
     <%= form_for @changeset, create_product(), [multipart: true], fn f -> %>
       <div class="form-row">
         <div class="col-7">
-          <label for="product_name">Product name</label>
+          <h4>Product name</h4>
           <%= text_input(f, :name, class: "form-control") %>
         </div>
         <div class="col-1">
-          <label for="product_amount">Amount</label>
+          <h4>Amount</h4>
           <%= number_input(f, :amount, class: "form-control") %>
         </div>
         <div class="col-2">
-          <label for="product_price">Price</label>
+          <h4>Price</h4>
           <%= telephone_input(f, :price, class: "form-control") %>
         </div>
         <div class="col-2">
-          <label for="product_department_id">Department</label>
+          <h4>Department</h4>
           <%= select(f, :department_id, @departments, class: "form-control") %>
         </div>
       </div>
       <div class="form-row mt-4">
         <div class="col-12">
-          <label for="product_description">Description</label>
+          <h4>Description</h4>
           <%= textarea(f, :description, class: "form-control", rows: 5) %>
         </div>
       </div>
       <div class="form-row mt-4">
         <div class="col-12">
+          <h4>Images</h4>
           <%= array_input(f, :images, "images") %>
         </div>
       </div>
@@ -39,7 +41,7 @@
       <div class="form-row mt-4">
         <div class="col-12 text-right">
           <%= submit("Back", class: "btn btn-outline-danger mr-2") %>
-          <%= submit("Save product", class: "btn btn-success") %>
+          <%= submit("SAVE PRODUCT", class: "btn btn-success") %>
         </div>
       </div>
     <% end %>

@@ -8,7 +8,8 @@ defmodule ElixirEcommerce.Product do
     Repo,
     Department,
     Product,
-    ProductImages
+    ProductImages,
+    ProductAttribute
   }
 
   @required_fields [:name, :amount, :price, :department, :description]
@@ -21,6 +22,7 @@ defmodule ElixirEcommerce.Product do
     field :price, :integer
     belongs_to :department, Department
     has_many :images, ProductImages, on_delete: :delete_all
+    has_many :attributes, ProductAttribute, on_delete: :delete_all
 
     timestamps()
   end
@@ -44,6 +46,7 @@ defmodule ElixirEcommerce.Product do
       |> Product.changeset(attrs)
       |> Repo.insert()
       |> create_product_images(attrs)
+      |> create_attributes(attrs)
   end
 
   def all(params \\ %{page: 1, page_size: 9}) do
@@ -82,11 +85,21 @@ defmodule ElixirEcommerce.Product do
     Repo.delete(product)
   end
 
-  defp create_product_images({:error, errors}, attrs), do: {:error, errors, attrs}
+  defp create_product_images({:error, errors}, attrs), do: {:error, errors}
   defp create_product_images({:ok, product}, attrs) do
     if is_map_key(attrs, :images) do
       Enum.each attrs[:images], fn ({_, image}) ->
         {:ok, _} = ProductImages.create(image: image, product: product)
+      end
+    end
+    {:ok, product}
+  end
+
+  defp create_attributes({:error, errors}, attrs), do: {:error, errors, attrs}
+  defp create_attributes({:ok, product}, attrs) do
+    if is_map_key(attrs, :attributes) do
+      Enum.each attrs[:attributes], fn ({_, attribute}) ->
+        {:ok, _} = ProductAttribute.create(title: attribute["title"], description: attribute["description"], product: product)
       end
     end
     {:ok, product, attrs}
