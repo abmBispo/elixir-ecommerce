@@ -1,0 +1,12 @@
+.nav-central-item {
+  transition: .1s;
+}
+
+.nav-central-item:hover {
+  background-color: #4E7499;
+  transition: .1s;
+}
+
+.nav-central-item:hover a h5 {
+  color: white;
+}

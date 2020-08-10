@@ -1,0 +1,17 @@
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  background-image: none;
+}
+
+.carousel-control-next-icon
+{
+  font-size: 55px;
+  color: #343A40;
+}
+
+.carousel-control-prev-icon {
+  font-size: 55px;
+  color: #343A40;
+}

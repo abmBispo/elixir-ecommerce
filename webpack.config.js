@@ -57,7 +57,6 @@ module.exports = (env, options) => ({
     })
   ],
   resolve: {
-    // Add '.ts' and '.tsx' as resolvable extensions.
     extensions: ['.js', '.jsx', '.json']
   }
 });

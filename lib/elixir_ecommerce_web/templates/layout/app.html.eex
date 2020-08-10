@@ -6,16 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="csrf" content="<%= Plug.CSRFProtection.get_csrf_token() %>">
-  <title>ElixirEcommerce · Phoenix Framework</title>
-  <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>" />
-  <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  <title>EE - Online Store</title>
+  <link rel="stylesheet" href='<%= Routes.static_path(@conn, "/css/app.css") %>' />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <script defer type="text/javascript" src='<%= Routes.static_path(@conn, "/js/app.js") %>'></script>
 </head>
 
 <body>
   <header>
     <section class="container-fluid">
       <!-- Navigation -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top py-0">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">ElixirEcommerce</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -23,15 +24,44 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class='navbar-nav ml-auto'>
+              <%= Enum.map @departments, fn(department) -> %>
+                <li class='nav-central-item pt-2'>
+                  <%= link(to: department_products(department), class: "nav-link") do %>
+                      <h5><%= department.name %></h5>
+                  <% end %>
+                </li>
+              <% end %>
+                <li class='nav-central-item pt-2'>
+                  <a href="#" class='nav-link'>
+                    <h5><i class="fas fa-chevron-down"></i></h5>
+                  </a>
+                </li>
+            </ul>
+
             <ul class="navbar-nav ml-auto">
+              <li class='nav-item'>
+                <a href="#" class='nav-link' data-toggle="tooltip" data-placement="bottom" title="Search for products">
+                  <i class="fas fa-2x fa-search"></i>
+                </a>
+              </li>
+              <li class='nav-item'>
+                <a href="#" class='nav-link' data-toggle="tooltip" data-placement="bottom" title="Product cart">
+                  <i class="fas fa-2x fa-shopping-cart"></i>
+                </a>
+              </li>
               <%= if @current_user do %>
-              <li class="nav-item active">
-                <%= link("Home", to: home_path(), class: "nav-link") %>
-              </li>
+                <li class="nav-item active">
+                  <%= link(to: home_path(), class: "nav-link") do %>
+                    <i class='fas fa-2x fa-user' data-toggle="tooltip" data-placement="bottom" title="Search for products"></i>
+                  <% end %>
+                </li>
               <% else %>
-              <li class="nav-item">
-                <%= link("Entrar", to: session_path(), class: "nav-link") %>
-              </li>
+                <li class="nav-item">
+                  <%= link(to: session_path(), class: "nav-link") do %>
+                    <i class="fas fa-2x fa-sign-in-alt" data-toggle="tooltip" data-placement="bottom" title="Log in"></i>
+                  <% end %>
+                </li>
               <% end %>
             </ul>
           </div>
