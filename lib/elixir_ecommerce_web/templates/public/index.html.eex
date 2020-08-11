@@ -10,7 +10,7 @@
           </ol>
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active"style="max-height: 500px;">
-              <img class="d-block img-fluid" src="/priv/static/images/futebas.jpg" width="100%" alt="First slide">
+              <img class="d-block img-fluid" src="/priv/static/images/celulares/celular.jpg" width="100%" alt="First slide">
             </div>
             <div class="carousel-item"style="max-height: 500px;">
               <img class="d-block img-fluid" src="/priv/static/images/ball-and-koke.jpg" width="100%" alt="Second slide">
@@ -35,27 +35,101 @@
       </div>
     </div>
 
-    <div class="row mx-auto">
-      <%= Enum.map @products, fn(product) -> %>
-      <div class="col-md-4 col-12 mb-5 p-0 p-md-2">
+    <div class="jumbotron">
+      <h1 class="display-4">Welcome to ElixirEcommerce</h1>
+      <p class="lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum totam odio aliquid enim blanditiis. Aliquid cumque enim, dicta inventore dolorum, cum, iusto distinctio ratione odio culpa ad ipsa eligendi mollitia?</p>
+      <hr class="my-4">
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita, sed aliquid perferendis recusandae nisi vitae quam rem aliquam suscipit corporis illum iure! Velit ipsam unde veniam perferendis hic non consectetur! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita, sed aliquid perferendis recusandae nisi vitae quam rem aliquam suscipit corporis illum iure! Velit ipsam unde veniam perferendis hic non consectetur!</p>
+      <a class="btn btn-outline-primary btn-lg float-right" href="#" role="button">Get more offers!</a>
+    </div>
+
+    <div class="row mx-auto mb-5">
+      <div class="col-md-5 offset-md-1 col-12">
+        <div class="card h-100">
+          <a href="#">
+            <div style="max-height: 400px; overflow: hidden;">
+              <img class="card-img-top" src="/priv/static/images/sports/futebas.jpg" alt="">
+            </div>
+          </a>
+          <div class="card-body">
+            <%= link(to: department_products(@sport_department), class: "nav-link") do %>
+              <h4 class="card-title"><%= @sport_department.name %></h4>
+            <% end %>
+            <p class="card-text" style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum voluptatibus quidem perspiciatis qui dolorem, aut atque nam eos nobis dolore obcaecati blanditiis, sapiente laudantium impedit consectetur, ipsa incidunt ducimus unde.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 col-12">
+        <div class="card h-100">
+          <a href="#">
+            <div style="max-height: 400px; overflow: hidden;">
+              <img class="card-img-top" src="/priv/static/images/games/pc-gamer.jpg" alt="" >
+            </div>
+          </a>
+          <div class="card-body">
+            <%= link(to: department_products(@games_department), class: "nav-link") do %>
+              <h4 class="card-title"><%= @games_department.name %></h4>
+            <% end %>
+            <p class="card-text" style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum voluptatibus quidem perspiciatis qui dolorem, aut atque nam eos nobis dolore obcaecati blanditiis, sapiente laudantium impedit consectetur, ipsa incidunt ducimus unde.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mx-auto mb-5">
+      <div class="col-md-5 offset-md-1 col-12">
+        <div class="card h-100">
+          <a href="#">
+            <img class="card-img-top" src="/priv/static/images/sports/futebas.jpg" alt="">
+          </a>
+          <div class="card-body">
+            <h4 class="card-title">Sports</h4>
+            <p class="card-text" style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum voluptatibus quidem perspiciatis qui dolorem, aut atque nam eos nobis dolore obcaecati blanditiis, sapiente laudantium impedit consectetur, ipsa incidunt ducimus unde.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 col-12">
         <div class="card h-100">
           <a href="#">
             <img class="card-img-top" src="http://placehold.it/700x400" alt="">
           </a>
           <div class="card-body">
-            <h4 class="card-title">
-              <%= link(product.name, to: show_product(product)) %>
-            </h4>
-            <h5><%= product_price(product) %></h5>
-            <p class="card-text"
-              style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;">
-              <%= product.description %></p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+            <h4 class="card-title">Department</h4>
+            <p class="card-text" style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum voluptatibus quidem perspiciatis qui dolorem, aut atque nam eos nobis dolore obcaecati blanditiis, sapiente laudantium impedit consectetur, ipsa incidunt ducimus unde.
+            </p>
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="row mx-auto">
+      <%= Enum.map @products, fn(product) -> %>
+        <div class="col-md-4 col-12 mb-5 p-0 p-md-2">
+          <div class="card h-100">
+            <a href="#">
+              <img class="card-img-top" src="http://placehold.it/700x400" alt="">
+            </a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <%= link(product.name, to: show_product(product)) %>
+              </h4>
+              <h5><%= product_price(product) %></h5>
+              <p class="card-text"
+                style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;">
+                <%= product.description %></p>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
