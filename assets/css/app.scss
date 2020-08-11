@@ -2,6 +2,8 @@
 @import "../../node_modules/bootstrap/dist/css/bootstrap.css";
 @import "./navbar/nav-central-item.css";
 @import "./carousel/arrow.css";
+@import "./search-box/search-box.css";
+@import "./fonts.css";
 
 /* Alerts and form errors */
 .alert {
@@ -41,4 +43,8 @@
 
 .carousel-indicators li {
   height: 15px;
+}
+
+.nav-link {
+  cursor: pointer;
 }

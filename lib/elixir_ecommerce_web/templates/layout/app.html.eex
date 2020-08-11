@@ -41,28 +41,26 @@
 
             <ul class="navbar-nav ml-auto">
               <li class='nav-item'>
-                <a href="#" class='nav-link' data-toggle="tooltip" data-placement="bottom" title="Search for products">
-                  <i class="fas fa-2x fa-search"></i>
-                </a>
+                <div id='product-search'></div>
               </li>
               <li class='nav-item'>
                 <a href="#" class='nav-link' data-toggle="tooltip" data-placement="bottom" title="Product cart">
                   <i class="fas fa-2x fa-shopping-cart"></i>
                 </a>
               </li>
-              <%= if @current_user do %>
-                <li class="nav-item active">
-                  <%= link(to: home_path(), class: "nav-link") do %>
-                    <i class='fas fa-2x fa-user' data-toggle="tooltip" data-placement="bottom" title="Search for products"></i>
-                  <% end %>
-                </li>
-              <% else %>
-                <li class="nav-item">
-                  <%= link(to: session_path(), class: "nav-link") do %>
-                    <i class="fas fa-2x fa-sign-in-alt" data-toggle="tooltip" data-placement="bottom" title="Log in"></i>
-                  <% end %>
-                </li>
-              <% end %>
+                <%= if @current_user do %>
+                  <li class="nav-item active">
+                    <%= link(to: home_path(), class: "nav-link") do %>
+                      <i class='fas fa-2x fa-user' data-toggle="tooltip" data-placement="bottom" title="Search for products"></i>
+                    <% end %>
+                  </li>
+                <% else %>
+                  <li class="nav-item">
+                    <%= link(to: session_path(), class: "nav-link") do %>
+                      <i class="fas fa-2x fa-sign-in-alt" data-toggle="tooltip" data-placement="bottom" title="Log in"></i>
+                    <% end %>
+                  </li>
+                <% end %>
             </ul>
           </div>
         </div>

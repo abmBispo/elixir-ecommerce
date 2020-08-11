@@ -19,7 +19,7 @@
 
 <div class="row w-100 mx-auto">
   <div class="jumbotron">
-    <h1 class="display-4">Welcome to ElixirEcommerce</h1>
+    <h1>Welcome to ElixirEcommerce</h1>
     <p class="lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum totam odio aliquid enim blanditiis. Aliquid cumque enim, dicta inventore dolorum, cum, iusto distinctio ratione odio culpa ad ipsa eligendi mollitia?</p>
     <hr class="my-4">
     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita, sed aliquid perferendis recusandae nisi vitae quam rem aliquam suscipit corporis illum iure! Velit ipsam unde veniam perferendis hic non consectetur! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita, sed aliquid perferendis recusandae nisi vitae quam rem aliquam suscipit corporis illum iure! Velit ipsam unde veniam perferendis hic non consectetur!</p>
@@ -68,10 +68,12 @@
       <div class="col-md-5 offset-md-1 col-12">
         <div class="card h-100">
           <a href="#">
-            <img class="card-img-top" src="/priv/static/images/sports/futebas.jpg" alt="">
+            <div style="max-height: 400px; overflow: hidden;">
+              <img class="card-img-top" src="/priv/static/images/aircrafts/aviao 3.jpg" alt="">
+            </div>
           </a>
           <div class="card-body">
-            <h4 class="card-title">Sports</h4>
+            <h4 class="card-title">Eletronics</h4>
             <p class="card-text" style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum voluptatibus quidem perspiciatis qui dolorem, aut atque nam eos nobis dolore obcaecati blanditiis, sapiente laudantium impedit consectetur, ipsa incidunt ducimus unde.
             </p>
@@ -81,10 +83,12 @@
       <div class="col-md-5 col-12">
         <div class="card h-100">
           <a href="#">
-            <img class="card-img-top" src="http://placehold.it/700x400" alt="">
+            <div style="max-height: 400px; overflow: hidden;">
+              <img class="card-img-top" src="/priv/static/images/bathroom/bathroom.jpg" alt="">
+            </div>
           </a>
           <div class="card-body">
-            <h4 class="card-title">Department</h4>
+            <h4 class="card-title">Bathroom</h4>
             <p class="card-text" style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum voluptatibus quidem perspiciatis qui dolorem, aut atque nam eos nobis dolore obcaecati blanditiis, sapiente laudantium impedit consectetur, ipsa incidunt ducimus unde.
             </p>

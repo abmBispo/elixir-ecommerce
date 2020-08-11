@@ -30,7 +30,7 @@ defmodule ElixirEcommerceWeb.Endpoint do
     at: "/priv/static",
     from: :elixir_ecommerce,
     gzip: false,
-    only: ~w(images)
+    only: ~w(images fonts)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

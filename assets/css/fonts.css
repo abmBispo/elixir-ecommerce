@@ -1,0 +1,53 @@
+@font-face {
+  font-family: 'Roboto Slab';
+  src: url(../static/fonts/RobotoSlab-Medium.ttf);
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  src: url(../static/fonts/RobotoSlab-Light.ttf);
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  font-weight: 300;
+  src: url(../static/fonts/RobotoSlab-Light.ttf);
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  font-weight: 700;
+  src: url(../static/fonts/RobotoSlab-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  font-weight: 600;
+  src: url(../static/fonts/RobotoSlab-SemiBold.ttf);
+}
+
+* {
+  font-family: 'Roboto Slab', monospace;
+}
+
+p {
+  font-family: 'Roboto Slab', monospace;
+  font-weight: 300;
+}
+
+h1 {
+  font-family: 'Roboto Slab', monospace;
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+h4 {
+  font-family: 'Roboto Slab', monospace;
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+h5 {
+  font-family: 'Roboto Slab', monospace;
+  font-weight: 300;
+}
