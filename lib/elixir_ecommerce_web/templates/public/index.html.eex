@@ -1,48 +1,32 @@
-<div class="row p-md-5">
+<div id="main-carousel" class="carousel slide pt-4 pb-0 mb-0" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#main-carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#main-carousel" data-slide-to="1"></li>
+    <li data-target="#main-carousel" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active"style="max-height: 800px; margin-top: -72px;">
+      <img class="d-block img-fluid" src="/priv/static/images/celulares/celular.jpg" width="100%" alt="First slide">
+    </div>
+    <div class="carousel-item"style="max-height: 800px; margin-top: -72px;">
+      <img class="d-block img-fluid" src="/priv/static/images/ball-and-koke.jpg" width="100%" alt="Second slide">
+    </div>
+    <div class="carousel-item" style="max-height: 800px; margin-top: -72px;">
+      <img class="d-block img-fluid" src="/priv/static/images/sports/futebas.jpg" width="100%" alt="Third slide">
+    </div>
+  </div>
+</div>
+
+<div class="row w-100 mx-auto">
+  <div class="jumbotron">
+    <h1 class="display-4">Welcome to ElixirEcommerce</h1>
+    <p class="lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum totam odio aliquid enim blanditiis. Aliquid cumque enim, dicta inventore dolorum, cum, iusto distinctio ratione odio culpa ad ipsa eligendi mollitia?</p>
+    <hr class="my-4">
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita, sed aliquid perferendis recusandae nisi vitae quam rem aliquam suscipit corporis illum iure! Velit ipsam unde veniam perferendis hic non consectetur! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita, sed aliquid perferendis recusandae nisi vitae quam rem aliquam suscipit corporis illum iure! Velit ipsam unde veniam perferendis hic non consectetur!</p>
+    <a class="btn btn-outline-primary btn-lg float-right" href="#" role="button">Get more offers!</a>
+  </div>
+
   <div class="col-md-12 col-12">
-    <div class="row mx-auto">
-      <div class="col-md-8 col-12 p-0 p-md-2 mx-auto">
-        <div id="main-carousel" class="carousel slide my-4" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#main-carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#main-carousel" data-slide-to="1"></li>
-            <li data-target="#main-carousel" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active"style="max-height: 500px;">
-              <img class="d-block img-fluid" src="/priv/static/images/celulares/celular.jpg" width="100%" alt="First slide">
-            </div>
-            <div class="carousel-item"style="max-height: 500px;">
-              <img class="d-block img-fluid" src="/priv/static/images/ball-and-koke.jpg" width="100%" alt="Second slide">
-            </div>
-            <div class="carousel-item" style="max-height: 500px;">
-              <img class="d-block img-fluid" src="/priv/static/images/linda-moca.jpg" width="100%" alt="Third slide">
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#main-carousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true">
-              <i class="fas fa-angle-left"></i>
-            </span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#main-carousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true">
-              <i class="fas fa-angle-right"></i>
-            </span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="jumbotron">
-      <h1 class="display-4">Welcome to ElixirEcommerce</h1>
-      <p class="lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum totam odio aliquid enim blanditiis. Aliquid cumque enim, dicta inventore dolorum, cum, iusto distinctio ratione odio culpa ad ipsa eligendi mollitia?</p>
-      <hr class="my-4">
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita, sed aliquid perferendis recusandae nisi vitae quam rem aliquam suscipit corporis illum iure! Velit ipsam unde veniam perferendis hic non consectetur! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita, sed aliquid perferendis recusandae nisi vitae quam rem aliquam suscipit corporis illum iure! Velit ipsam unde veniam perferendis hic non consectetur!</p>
-      <a class="btn btn-outline-primary btn-lg float-right" href="#" role="button">Get more offers!</a>
-    </div>
-
     <div class="row mx-auto mb-5">
       <div class="col-md-5 offset-md-1 col-12">
         <div class="card h-100">
