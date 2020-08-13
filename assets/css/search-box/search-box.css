@@ -55,5 +55,6 @@
 
 .suggestions {
   background-color: white;
-  width: 100px;
+  width: 100%;
+  position: absolute;
 }

@@ -49,10 +49,17 @@ defmodule ElixirEcommerceWeb.PublicController do
   def text_search(conn, params) do
     json(conn, [
       %{
+        id: 1,
         value: params["value"],
         name: "Football oficial ball",
         department: "Sports"
-      }
+      },
+      %{
+        id: 2,
+        value: params["value"],
+        name: "Football oficial ball",
+        department: "Sports"
+      },
     ])
   end
 end

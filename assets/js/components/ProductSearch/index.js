@@ -6,6 +6,7 @@ export default () => {
   const [show, setShow] = useState(false);
   const [typingTimeout, setTypingTimeout] = useState(0);
   const [inputText, setInputText] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
 
   return (
     <>
@@ -37,12 +38,24 @@ export default () => {
 
                   setTypingTimeout(setTimeout(() => {
                     axios.get('/text-search', { params: { value: newValue } })
-                      .then((res) => console.log(res.data[0]))
+                      .then((res) => setSuggestions(suggestions.concat(res.data)))
                   }, 500));
                 }} />
             </div>
-            <div className="suggestions">
-                
+            <div className="suggestions" style={{ height: `${suggestions.length * 25}px` }}>
+                {console.log(suggestions.length)}
+              {
+                suggestions.map((suggestion, index) => {
+                  return (
+                    <div>
+                      <a href={`/products/${suggestion.id}`}>
+                        <span key={index}>{suggestion.name}</span>
+                        <span key={1000 - index}>{suggestion.department}</span>
+                      </a>
+                    </div>
+                  );
+                })
+              }
             </div>
           </div>
         </div>
