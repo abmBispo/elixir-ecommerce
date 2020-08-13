@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import If from '../templates/If';
+import axios from 'axios';
 
 export default () => {
   const [show, setShow] = useState(false);
+  const [typingTimeout, setTypingTimeout] = useState(0);
+  const [inputText, setInputText] = useState("");
 
   return (
     <>
@@ -15,12 +18,31 @@ export default () => {
       </a>
       <If test={show}>
         <div className='search-box'>
-          <div class="wrap">
-            <div class="search">
-                <input type="text" class="searchTerm" placeholder="What are you looking for?" />
-                <button type="submit" class="searchButton">
-                  <i class="fa fa-search"></i>
-              </button>
+          <div className="wrap">
+            <div className="search">
+              <h4>Search products by name, description...</h4>
+              <input
+                type="text"
+                className="searchTerm"
+                placeholder="What are you looking for?"
+                value={inputText}
+                onChange={(e) => {
+                  const newValue = e.target.value;
+
+                  if (typingTimeout) {
+                    clearTimeout(typingTimeout);
+                  }
+
+                  setInputText(newValue);
+
+                  setTypingTimeout(setTimeout(() => {
+                    axios.get('/text-search', { params: { value: newValue } })
+                      .then((res) => console.log(res.data[0]))
+                  }, 500));
+                }} />
+            </div>
+            <div className="suggestions">
+                
             </div>
           </div>
         </div>

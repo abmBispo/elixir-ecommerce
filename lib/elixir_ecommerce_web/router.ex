@@ -9,6 +9,10 @@ defmodule ElixirEcommerceWeb.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :api do
+    plug :accepts, ["json"]
+  end
+
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put
@@ -37,6 +41,11 @@ defmodule ElixirEcommerceWeb.Router do
 
   pipeline :login_layout do
     plug :put_layout, {LayoutView, :login}
+  end
+
+  scope "/", ElixirEcommerceWeb do
+    pipe_through [:auth, :api]
+    get "/text-search", PublicController, :text_search
   end
 
   # Maybe logged in routes

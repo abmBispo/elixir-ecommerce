@@ -73,7 +73,9 @@
             </div>
           </a>
           <div class="card-body">
-            <h4 class="card-title">Eletronics</h4>
+            <%= link(to: department_products(@eletronics_department), class: "nav-link") do %>
+              <h4 class="card-title"><%= @eletronics_department.name %></h4>
+            <% end %>
             <p class="card-text" style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum voluptatibus quidem perspiciatis qui dolorem, aut atque nam eos nobis dolore obcaecati blanditiis, sapiente laudantium impedit consectetur, ipsa incidunt ducimus unde.
             </p>
@@ -88,7 +90,9 @@
             </div>
           </a>
           <div class="card-body">
-            <h4 class="card-title">Bathroom</h4>
+            <%= link(to: department_products(@bathroom_department), class: "nav-link") do %>
+              <h4 class="card-title"><%= @bathroom_department.name %></h4>
+            <% end %>
             <p class="card-text" style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum voluptatibus quidem perspiciatis qui dolorem, aut atque nam eos nobis dolore obcaecati blanditiis, sapiente laudantium impedit consectetur, ipsa incidunt ducimus unde.
             </p>

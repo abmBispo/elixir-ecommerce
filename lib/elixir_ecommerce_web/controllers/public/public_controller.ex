@@ -21,6 +21,14 @@ defmodule ElixirEcommerceWeb.PublicController do
       Department.retrieve(%{ name: "Games" })
       |> List.first()
 
+    eletronics_department =
+      Department.retrieve(%{ name: "Eletronics" })
+      |> List.first()
+
+    bathroom_department =
+      Department.retrieve(%{ name: "Bathroom" })
+      |> List.first()
+
     products = if params["department"] do
       Product.retrieve(department_id: params["department"])
       |> Repo.paginate(page: params["page"], page_size: 25)
@@ -33,6 +41,18 @@ defmodule ElixirEcommerceWeb.PublicController do
       current_user: user,
       departments: departments,
       games_department: games_department,
-      sport_department: sport_department)
+      sport_department: sport_department,
+      eletronics_department: eletronics_department,
+      bathroom_department: bathroom_department)
+  end
+
+  def text_search(conn, params) do
+    json(conn, [
+      %{
+        value: params["value"],
+        name: "Football oficial ball",
+        department: "Sports"
+      }
+    ])
   end
 end

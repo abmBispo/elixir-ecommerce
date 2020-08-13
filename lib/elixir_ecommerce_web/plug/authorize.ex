@@ -25,7 +25,7 @@ defmodule ElixirEcommerceWeb.Authorize do
     |> halt()
   end
 
-  defp check(action, role, resource) when action in [:index, :show] do
+  defp check(action, role, resource) when action in [:index, :show, :text_search] do
     can(role) |> read?(resource)
   end
 
