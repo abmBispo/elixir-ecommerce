@@ -9,6 +9,7 @@ defmodule ElixirEcommerce.Product do
     Department,
     Product,
     ProductImages,
+    ElasticsearchCluster,
     ProductAttribute
   }
 
@@ -80,6 +81,26 @@ defmodule ElixirEcommerce.Product do
     Product
       |> preload(:department)
       |> where(^params)
+  end
+
+  def text_search(query) do
+    {:ok, %{ "hits" => %{ "hits" => search }} } =
+      ElasticsearchCluster
+      |> Elasticsearch.post("/products/_doc/_search",
+        %{
+            query: %{
+              multi_match: %{
+                query: query,
+                fields: [:name, :description],
+                fuzziness: "AUTO"
+              }
+            }
+          }
+        )
+
+    search
+      |> Enum.map(fn product -> product["_id"] end)
+      |> Product.retrieve()
   end
 
   def update(%Product{} = product, attrs \\ %{}) do

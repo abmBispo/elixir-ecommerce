@@ -5,7 +5,6 @@ defmodule ElixirEcommerceWeb.PublicController do
     Product,
     Department,
     Repo,
-    ElasticsearchCluster,
     Serializers.ProductSerializer
   }
 
@@ -49,27 +48,7 @@ defmodule ElixirEcommerceWeb.PublicController do
   end
 
   def text_search(conn, params) do
-    {:ok, %{ "hits" => %{ "hits" => search }} } =
-      ElasticsearchCluster
-      |> Elasticsearch.post("/products/_doc/_search",
-        %{
-            query: %{
-              multi_match: %{
-                query: params["value"],
-                fields: [:name, :description],
-                fuzziness: "AUTO"
-              }
-            }
-          }
-        )
-
-    products =
-      search
-      |> Enum.map(fn product -> product["_id"] end)
-      |> Product.retrieve()
-
-    ProductSerializer.serialize(products) |> IO.inspect(label: "products")
-
+    products = Product.text_search(params["value"])
     json(conn, ProductSerializer.serialize(products))
   end
 end

@@ -38,10 +38,7 @@ export default () => {
 
                   setTypingTimeout(setTimeout(() => {
                     axios.get('/text-search', { params: { value: newValue } })
-                      .then((res) => {
-                        console.log(res.data);
-                        setSuggestions(res.data)
-                      })
+                      .then((res) => setSuggestions(res.data))
                   }, 300));
                 }} />
             </div>
