@@ -4,8 +4,9 @@ defmodule ElixirEcommerce.Serializers.ProductSerializer do
     Serializers.DepartmentSerializer
   }
 
-  def serialize(%Product{ name: name, description: description, department: department }) do
+  def serialize(%Product{ id: id, name: name, description: description, department: department }) do
     %{
+      id: id,
       name: name,
       description: description,
       department: DepartmentSerializer.serialize(department)

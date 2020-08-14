@@ -38,7 +38,10 @@ export default () => {
 
                   setTypingTimeout(setTimeout(() => {
                     axios.get('/text-search', { params: { value: newValue } })
-                      .then((res) => setSuggestions(res.data))
+                      .then((res) => {
+                        console.log(res.data);
+                        setSuggestions(res.data)
+                      })
                   }, 300));
                 }} />
             </div>
@@ -52,7 +55,7 @@ export default () => {
                           <span key={index}>{suggestion.name}</span>
                         </a>
                         <span className="badge badge-primary badge-pill">
-                          <span>{suggestion.department}</span>
+                          <span>{suggestion.department.name}</span>
                         </span>
                       </li>
                     );
