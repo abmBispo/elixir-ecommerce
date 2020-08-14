@@ -4,7 +4,9 @@ defmodule ElixirEcommerceWeb.PublicController do
     UserManager.User,
     Product,
     Department,
-    Repo
+    Repo,
+    ElasticsearchCluster,
+    Serializers.ProductSerializer
   }
 
   plug ElixirEcommerceWeb.Authorize, resource: User
@@ -47,19 +49,27 @@ defmodule ElixirEcommerceWeb.PublicController do
   end
 
   def text_search(conn, params) do
-    json(conn, [
-      %{
-        id: 1,
-        value: params["value"],
-        name: "Football oficial ball",
-        department: "Sports"
-      },
-      %{
-        id: 2,
-        value: params["value"],
-        name: "Football oficial ball",
-        department: "Sports"
-      },
-    ])
+    {:ok, %{ "hits" => %{ "hits" => search }} } =
+      ElasticsearchCluster
+      |> Elasticsearch.post("/products/_doc/_search",
+        %{
+            query: %{
+              multi_match: %{
+                query: params["value"],
+                fields: [:name, :description],
+                fuzziness: "AUTO"
+              }
+            }
+          }
+        )
+
+    products =
+      search
+      |> Enum.map(fn product -> product["_id"] end)
+      |> Product.retrieve()
+
+    ProductSerializer.serialize(products) |> IO.inspect(label: "products")
+
+    json(conn, ProductSerializer.serialize(products))
   end
 end

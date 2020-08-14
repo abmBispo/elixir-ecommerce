@@ -38,24 +38,27 @@ export default () => {
 
                   setTypingTimeout(setTimeout(() => {
                     axios.get('/text-search', { params: { value: newValue } })
-                      .then((res) => setSuggestions(suggestions.concat(res.data)))
-                  }, 500));
+                      .then((res) => setSuggestions(res.data))
+                  }, 300));
                 }} />
             </div>
             <div className="suggestions" style={{ height: `${suggestions.length * 25}px` }}>
-                {console.log(suggestions.length)}
-              {
-                suggestions.map((suggestion, index) => {
-                  return (
-                    <div>
-                      <a href={`/products/${suggestion.id}`}>
-                        <span key={index}>{suggestion.name}</span>
-                        <span key={1000 - index}>{suggestion.department}</span>
-                      </a>
-                    </div>
-                  );
-                })
-              }
+              <ul className="list-group">
+                {
+                  suggestions.map((suggestion, index) => {
+                    return (
+                      <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
+                        <a href={`/products/${suggestion.id}`}>
+                          <span key={index}>{suggestion.name}</span>
+                        </a>
+                        <span className="badge badge-primary badge-pill">
+                          <span>{suggestion.department}</span>
+                        </span>
+                      </li>
+                    );
+                  })
+                }
+              </ul>
             </div>
           </div>
         </div>

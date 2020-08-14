@@ -14,7 +14,9 @@ defmodule ElixirEcommerce.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: ElixirEcommerce.PubSub},
       # Start the Endpoint (http/https)
-      ElixirEcommerceWeb.Endpoint
+      ElixirEcommerceWeb.Endpoint,
+      # Elastic search cluster
+      ElixirEcommerce.ElasticsearchCluster
       # Start a worker by calling: ElixirEcommerce.Worker.start_link(arg)
       # {ElixirEcommerce.Worker, arg}
     ]

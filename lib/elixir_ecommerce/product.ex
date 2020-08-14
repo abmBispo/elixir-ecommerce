@@ -57,6 +57,13 @@ defmodule ElixirEcommerce.Product do
       |> Repo.paginate(params)
   end
 
+  def retrieve(ids) when is_list(ids) do
+    Product
+      |> preload(:department)
+      |> where([p], p.id in ^ids)
+      |> Repo.all
+  end
+
   def retrieve(id) when is_number(id) do
     Product
       |> preload(:images)
